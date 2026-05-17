@@ -93,7 +93,7 @@ export function generateColorScale(hex: string): ColorScale | null {
   };
 }
 
-export type GradientStyle = 'solid' | 'soft' | 'vendus' | 'custom';
+export type GradientStyle = 'solid' | 'soft' | 'scale' | 'custom';
 
 export function buildGradient(
   scale: ColorScale,
@@ -114,6 +114,6 @@ export function buildGradient(
       return `linear-gradient(135deg, hsl(${hslToString(s)}), hsl(${hslToString(m)}), hsl(${hslToString(e)}))`;
     }
   }
-  // 'vendus' style (default) — 3 stop rich gradient
+  // 'scale' style (default) — 3 stop rich gradient
   return `linear-gradient(135deg, hsl(${scale.darkerStr}), hsl(${scale.baseStr}), hsl(${scale.lighterStr}))`;
 }

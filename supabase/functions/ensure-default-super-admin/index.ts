@@ -5,7 +5,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const DEFAULT_EMAIL = "superadmin@vendus.com.br";
+const DEFAULT_EMAIL = "superadmin@scale.glauberads.com.br";
 const DEFAULT_PASSWORD = "@Mudarsenha#123";
 const DEFAULT_NAME = "Super Admin";
 

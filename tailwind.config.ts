@@ -18,6 +18,7 @@ export default {
       },
       backgroundImage: {
         'vendus-gradient': 'linear-gradient(135deg, #3F6212, #84CC16, #BEF264)',
+        'scale-gradient': 'linear-gradient(135deg, #3F6212, #84CC16, #BEF264)',
       },
       colors: {
         border: "hsl(var(--border))",

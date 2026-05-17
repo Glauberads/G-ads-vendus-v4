@@ -145,7 +145,7 @@ export default function WhiteLabelPage() {
   }, []);
 
   useEffect(() => {
-    document.title = 'Vendus White Label · Sua plataforma de vendas com Agentes de IA';
+    document.title = 'Scale White Label · Sua plataforma de vendas com Agentes de IA';
   }, []);
 
   const [progress, setProgress] = useState(0);
@@ -220,7 +220,7 @@ export default function WhiteLabelPage() {
       </div>
       <nav className="wl-nav"><div className="wl-nav-inner">
         <a href="#" className="wl-nav-brand">
-          <img src={vendusLogo} alt="Vendus" className="wl-vendus-logo" style={{height:32}} />
+          <img src={vendusLogo} alt="Scale" className="wl-vendus-logo" style={{height:32}} />
           
         </a>
         <ul className="wl-nav-links"><li><a href="#modulos">Módulos</a></li><li><a href="#calculadora">Calculadora</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#faq">FAQ</a></li></ul>
@@ -229,8 +229,8 @@ export default function WhiteLabelPage() {
 
       <section className="wl-hero" id="home">
         <div className="wl-grid-bg" /><div className="wl-hero-glow" /><div className="wl-hero-glow2" />
-        <img src={vendusLogo} alt="Vendus White Label" style={{height:64,marginBottom:24,filter:'drop-shadow(0 0 30px rgba(0,255,102,0.4))'}} />
-        <div className="wl-hero-badge">🔥 Lançamento Vendus White Label</div>
+        <img src={vendusLogo} alt="Scale White Label" style={{height:64,marginBottom:24,filter:'drop-shadow(0 0 30px rgba(0,255,102,0.4))'}} />
+        <div className="wl-hero-badge">🔥 Lançamento Scale White Label</div>
         <h1>Sua plataforma de vendas<br /><span className="hl">com Agentes de IA</span><span className="line2">— sua marca, seus clientes, sua recorrência</span></h1>
         <p className="wl-hero-sub">Tenha um SaaS completo de CRM, IA, omnichannel e automação com 28 módulos prontos. Código-fonte React + Supabase 100% seu, white label real, pronto para vender amanhã.</p>
 
@@ -241,7 +241,7 @@ export default function WhiteLabelPage() {
             frameBorder={0}
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
             allowFullScreen
-            title="Vendus White Label"
+            title="Scale White Label"
             style={{ width: '100%', height: '100%', border: 0, borderRadius: 'inherit' }}
           />
         </div>
@@ -291,7 +291,7 @@ export default function WhiteLabelPage() {
             {title:'Contratar IA por fora',desc:'ChatGPT + APIs de voz + integração manual. Sem contexto do CRM, sem rastreabilidade.',cost:'💸 R$800–R$2.000/mês + dev para integrar'}
           ].map((a, i) => <div key={i} className="wl-alt-card"><div className="wl-x-mark">❌</div><h3>{a.title}</h3><p>{a.desc}</p><div className="wl-alt-cost">{a.cost}</div></div>)}
         </div>
-        <div className="wl-solution-bridge"><h2>Existe um terceiro caminho — e ele é absurdamente mais inteligente.</h2><p>O Vendus White Label: uma plataforma completa, com código liberado, white label total e pronta para faturar hoje.</p></div>
+        <div className="wl-solution-bridge"><h2>Existe um terceiro caminho — e ele é absurdamente mais inteligente.</h2><p>O Scale White Label: uma plataforma completa, com código liberado, white label total e pronta para faturar hoje.</p></div>
       </div></section>
 
       <section className="wl-modules-section" id="modulos"><div className="wl-container">
@@ -324,7 +324,7 @@ export default function WhiteLabelPage() {
               <div className="wl-rb-item"><span className="wl-rb-label">Margem %</span><span className="wl-rb-value green">{margem}%</span></div>
               <div className="wl-rb-item"><span className="wl-rb-label">Receita anual</span><span className="wl-rb-value green">{fmt(anual)}</span></div>
             </div>
-            <div className="wl-payback-badge">⚡ Payback do Vendus em {paybackMeses <= 1 ? '1 mês' : `${paybackMeses} meses`}</div>
+            <div className="wl-payback-badge">⚡ Payback do Scale em {paybackMeses <= 1 ? '1 mês' : `${paybackMeses} meses`}</div>
             <a href="#oferta" className="wl-btn-primary" style={{fontSize:'0.95rem',padding:'14px 28px',width:'100%'}}>Quero esse faturamento →</a>
           </div></div>
         </div></div>
@@ -337,7 +337,7 @@ export default function WhiteLabelPage() {
         <div className="wl-testimonials-grid">
           {[{text:'"Coloquei no ar em 4 dias. Na primeira semana fechei 3 clientes no plano de R$697."',result:'💰 R$ 2.091/mês em MRR na primeira semana',initials:'RF',name:'Rafael F.',role:'Agência de Marketing · São Paulo',bg:'rgba(0,255,102,0.2)',color:'#00FF66'},
             {text:'"Meus clientes já pagavam por ferramentas separadas. Agora pago R$25/mês de infra e cobro R$997/mês. 22 clientes ativos."',result:'📈 R$ 21.934/mês com 22 clientes',initials:'CM',name:'Carla M.',role:'Consultora Comercial · Belo Horizonte',bg:'rgba(255,184,0,0.2)',color:'#FFB800'},
-            {text:'"Tentei construir algo parecido por 8 meses com dev. Gastei R$90k e não entreguei metade. Comprei o Vendus, customizei com IA em 2 semanas e lancei."',result:'🏆 Economizou R$90k e 6 meses',initials:'PT',name:'Pedro T.',role:'Tech Founder · Curitiba',bg:'rgba(99,145,255,0.2)',color:'#6391FF'}
+            {text:'"Tentei construir algo parecido por 8 meses com dev. Gastei R$90k e não entreguei metade. Comprei o Scale, customizei com IA em 2 semanas e lancei."',result:'🏆 Economizou R$90k e 6 meses',initials:'PT',name:'Pedro T.',role:'Tech Founder · Curitiba',bg:'rgba(99,145,255,0.2)',color:'#6391FF'}
           ].map((t, i) => <div key={i} className="wl-testi-card"><div className="wl-testi-stars">★★★★★</div><p className="wl-testi-text">{t.text}</p><div className="wl-testi-result">{t.result}</div><div className="wl-testi-author"><div className="wl-testi-avatar" style={{background:t.bg,color:t.color}}>{t.initials}</div><div><div className="wl-testi-name">{t.name}</div><div className="wl-testi-role">{t.role}</div></div></div></div>)}
         </div>
       </div></section>
@@ -353,8 +353,8 @@ export default function WhiteLabelPage() {
         <div className="wl-section-badge">Comparação</div>
         <h2 className="wl-section-title" style={{marginBottom:60}}>Dois caminhos. Um resultado completamente diferente.</h2>
         <div className="wl-compare-grid">
-          <div className="wl-compare-card bad"><div className="wl-compare-header"><h3>❌ Sem o Vendus</h3></div><div className="wl-compare-body">{COMPARE_BAD.map((item, i) => <div key={i} className="wl-compare-item"><span className="wl-ci-icon">✕</span><span className="wl-ci-text">{item}</span></div>)}</div></div>
-          <div className="wl-compare-card good"><div className="wl-compare-header"><h3>✅ Com o Vendus</h3></div><div className="wl-compare-body">{COMPARE_GOOD.map((item, i) => <div key={i} className="wl-compare-item"><span className="wl-ci-icon">✓</span><span className="wl-ci-text">{item}</span></div>)}</div></div>
+          <div className="wl-compare-card bad"><div className="wl-compare-header"><h3>❌ Sem o Scale</h3></div><div className="wl-compare-body">{COMPARE_BAD.map((item, i) => <div key={i} className="wl-compare-item"><span className="wl-ci-icon">✕</span><span className="wl-ci-text">{item}</span></div>)}</div></div>
+          <div className="wl-compare-card good"><div className="wl-compare-header"><h3>✅ Com o Scale</h3></div><div className="wl-compare-body">{COMPARE_GOOD.map((item, i) => <div key={i} className="wl-compare-item"><span className="wl-ci-icon">✓</span><span className="wl-ci-text">{item}</span></div>)}</div></div>
         </div>
       </div></section>
 
@@ -374,8 +374,8 @@ export default function WhiteLabelPage() {
 
       <section className="wl-offer-section" id="preco"><div className="wl-container"><div className="wl-offer-wrapper">
         <div className="wl-offer-top">
-          <div className="wl-hero-badge" style={{margin:'0 auto 16px'}}>🔥 Oferta de Lançamento Vendus</div>
-          <h2>Vendus White Label<br />Plataforma SaaS All-in-One com Código Liberado</h2>
+          <div className="wl-hero-badge" style={{margin:'0 auto 16px'}}>🔥 Oferta de Lançamento Scale</div>
+          <h2>Scale White Label<br />Plataforma SaaS All-in-One com Código Liberado</h2>
           <p>Pague uma vez. Use para sempre. Fature recorrente todo mês.</p>
         </div>
         <div className="wl-offer-body">
@@ -403,7 +403,7 @@ export default function WhiteLabelPage() {
           <p>Cada mês parado é MRR que você não está recebendo.</p>
           <div className="wl-final-cost-table">
             <div className="wl-fct-item"><h4>Construir do zero</h4><div className="val red">R$300k</div><div style={{fontSize:'0.75rem',color:'var(--wl-text3)',marginTop:4}}>+ 12–18 meses</div></div>
-            <div className="wl-fct-item" style={{border:'1px solid var(--wl-accent)'}}><h4>Vendus White Label</h4><div className="val green">{PRICE_FROM}</div><div style={{fontSize:'0.75rem',color:'var(--wl-accent)',marginTop:4}}>12x R$103 ou R$997 à vista</div></div>
+            <div className="wl-fct-item" style={{border:'1px solid var(--wl-accent)'}}><h4>Scale White Label</h4><div className="val green">{PRICE_FROM}</div><div style={{fontSize:'0.75rem',color:'var(--wl-accent)',marginTop:4}}>12x R$103 ou R$997 à vista</div></div>
             <div className="wl-fct-item"><h4>Sua economia</h4><div className="val gold">R$290k</div><div style={{fontSize:'0.75rem',color:'var(--wl-text3)',marginTop:4}}>+ 1 ano de vantagem</div></div>
           </div>
           <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="wl-btn-primary" style={{fontSize:'1.1rem',padding:'20px 48px'}}>🚀 Quero Minha Licença — 12x R$103</a>
@@ -417,7 +417,7 @@ export default function WhiteLabelPage() {
         <div className="wl-faq-list">{FAQ_ITEMS.map((faq, i) => <div key={i} className={`wl-faq-item ${openFaq === i ? 'open' : ''}`}><button className="wl-faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>{faq.q}<span className="wl-faq-arrow">▼</span></button><div className="wl-faq-a">{faq.a}</div></div>)}</div>
       </div></section>
 
-      <footer className="wl-footer"><p>© 2026 Vendus · Todos os direitos reservados · Produto digital — entrega imediata após confirmação do pagamento</p></footer>
+      <footer className="wl-footer"><p>© 2026 Scale · Todos os direitos reservados · Produto digital — entrega imediata após confirmação do pagamento</p></footer>
     </div>
   );
 }

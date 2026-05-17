@@ -14,7 +14,7 @@ interface GradientPickerProps {
 const STYLES: { value: GradientStyle; label: string; description: string }[] = [
   { value: 'solid', label: 'Sólido', description: 'Sem gradiente, cor única' },
   { value: 'soft', label: 'Suave', description: '2 paradas — cor → claro' },
-  { value: 'vendus', label: 'Rico', description: '3 paradas — escuro → cor → claro' },
+  { value: 'scale', label: 'Rico', description: '3 paradas — escuro → cor → claro' },
   { value: 'custom', label: 'Custom', description: 'Escolha 3 cores manualmente' },
 ];
 

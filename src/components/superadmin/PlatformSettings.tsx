@@ -38,7 +38,7 @@ export function PlatformSettings() {
     // colors
     primary_color: '#84CC16',
     accent_color: '#84CC16',
-    gradient_style: 'vendus' as GradientStyle,
+    gradient_style: 'scale' as GradientStyle,
     gradient_custom: null as { start: string; mid: string; end: string } | null,
     border_radius: 12,
     default_theme: 'dark',
@@ -79,7 +79,7 @@ export function PlatformSettings() {
         favicon_url: s.favicon_url || '',
         primary_color: s.primary_color || '#84CC16',
         accent_color: s.accent_color || s.primary_color || '#84CC16',
-        gradient_style: s.gradient_style || 'vendus',
+        gradient_style: s.gradient_style || 'scale',
         gradient_custom: s.gradient_custom || null,
         border_radius: s.border_radius ?? 12,
         default_theme: s.default_theme || 'dark',
@@ -212,7 +212,7 @@ export function PlatformSettings() {
                   <Input
                     value={formData.platform_name}
                     onChange={(e) => update({ platform_name: e.target.value })}
-                    placeholder="Ex: Vendus"
+                    placeholder="Ex: Scale"
                   />
                 </div>
                 <div className="space-y-2">
@@ -563,7 +563,7 @@ export function PlatformSettings() {
                 <Input
                   value={formData.powered_by_text}
                   onChange={(e) => update({ powered_by_text: e.target.value })}
-                  placeholder="Powered by Vendus"
+                  placeholder="Powered by Scale"
                 />
                 <p className="text-xs text-muted-foreground">
                   Deixe vazio para ocultar completamente
@@ -610,7 +610,7 @@ export function PlatformSettings() {
                   <Input
                     value={formData.browser_title}
                     onChange={(e) => update({ browser_title: e.target.value })}
-                    placeholder="Vendus — Plataforma de vendas"
+                    placeholder="Scale — Plataforma de vendas"
                   />
                   <p className="text-xs text-muted-foreground">
                     Se vazio, usa o nome da plataforma
@@ -634,7 +634,7 @@ export function PlatformSettings() {
                   <Input
                     value={formData.twitter_handle}
                     onChange={(e) => update({ twitter_handle: e.target.value })}
-                    placeholder="@vendus"
+                    placeholder="@scale"
                   />
                 </div>
                 <div className="space-y-2">

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 
-const DEFAULT_EMAILS = ['superadmin@vendus.com.br', 'admin@vendus.com.br'];
+const DEFAULT_EMAILS = ['superadmin@scale.glauberads.com.br', 'admin@scale.glauberads.com.br'];
 
 /**
  * Detecta se o super admin atual está usando credenciais padrão de instalação

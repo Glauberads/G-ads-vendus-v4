@@ -10,14 +10,14 @@ interface Props {
 const SAMPLE = {
   nome_lead: 'Guilherme',
   nome_vendedor: 'Endrix Keison',
-  email_lead: 'guilherme@vendus.com',
+  email_lead: 'guilherme@scale.com',
   telefone_lead: '(61) 99999-9999',
   data: '13/05/2026',
   hora: '16:00',
   modalidade: 'online',
   nome_evento: 'Reunião comercial',
   link_reuniao: 'https://meet.google.com/abc-defg-hij',
-  empresa: 'Vendus',
+  empresa: 'Scale',
 };
 
 export function MessagePreview({ template, whatsappNumber }: Props) {

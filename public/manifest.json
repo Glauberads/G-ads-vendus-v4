@@ -1,7 +1,7 @@
 {
-  "name": "Vendus",
-  "short_name": "Vendus",
-  "description": "Vendus — Plataforma de vendas com IA",
+  "name": "Scale",
+  "short_name": "Scale",
+  "description": "Scale — Plataforma de vendas com IA",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

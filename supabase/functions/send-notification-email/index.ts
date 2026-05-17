@@ -33,7 +33,7 @@ const handler = async (req: Request): Promise<Response> => {
       .from("platform_settings")
       .select("platform_name")
       .maybeSingle();
-    const platformName = platformSettings?.platform_name || "Vendus";
+    const platformName = platformSettings?.platform_name || "Scale";
 
     const actionBlock = actionUrl
       ? `<p style="margin:24px 0"><a href="${actionUrl}" style="background:#a3e635;color:#1f2937;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:600">Ver detalhes</a></p>`

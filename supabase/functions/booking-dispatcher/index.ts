@@ -33,7 +33,7 @@ Deno.serve(async (req) => {
     Deno.env.get("SUPABASE_URL")!,
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
   );
-  const siteUrl = Deno.env.get("SITE_URL") || "https://app.vendus.com.br";
+  const siteUrl = Deno.env.get("SITE_URL") || "https://app.scale.glauberads.com.br";
 
   const startedAt = Date.now();
   console.log("[booking-dispatcher] tick start");

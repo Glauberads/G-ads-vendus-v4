@@ -138,7 +138,7 @@ export function usePlatformBranding() {
       root.style.setProperty('--sidebar-primary-foreground', scale.foreground);
       root.style.setProperty('--sidebar-ring', scale.baseStr);
 
-      const gradStyle = (settings.gradient_style as GradientStyle) || 'vendus';
+      const gradStyle = (settings.gradient_style as GradientStyle) || 'scale';
       const gradient = buildGradient(scale, gradStyle, settings.gradient_custom || null);
       root.style.setProperty('--gradient-primary', gradient);
       root.style.setProperty(

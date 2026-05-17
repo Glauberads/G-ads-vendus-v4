@@ -84,7 +84,7 @@ const handler = async (req: Request): Promise<Response> => {
       .from("platform_settings")
       .select("platform_name")
       .maybeSingle();
-    const platformName = platformSettings?.platform_name || "Vendus";
+    const platformName = platformSettings?.platform_name || "Scale";
 
     const result = await sendPlatformEmail({
       slug: "team_invite",
