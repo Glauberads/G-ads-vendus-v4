@@ -57,15 +57,19 @@ export function CompanySettings() {
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file || !profile?.organization_id) return;
+    
     setUploading(true);
     try {
       const url = await uploadCompanyLogo(file, profile.organization_id);
       setLogoUrl(url);
-      toast({ title: 'Logo enviado' });
+      toast({ title: 'Logo enviada com sucesso!', description: 'Lembre-se de salvar os dados da empresa.' });
     } catch (err: any) {
       toast({ title: 'Erro no upload', description: err.message, variant: 'destructive' });
     } finally {
       setUploading(false);
+      if (fileInput.current) {
+        fileInput.current.value = ''; // Permite subir o mesmo arquivo novamente
+      }
     }
   };
 

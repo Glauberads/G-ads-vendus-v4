@@ -72,14 +72,35 @@ export function useUpdateCompanySettings() {
 }
 
 export async function uploadCompanyLogo(file: File, orgId: string): Promise<string> {
+  // 1. Validação de Tamanho (Max 2MB)
+  if (file.size > 2 * 1024 * 1024) {
+    throw new Error('A imagem não pode ter mais de 2MB.');
+  }
+
+  // 2. Validação de Tipo
+  const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/svg+xml', 'image/webp'];
+  if (!allowedTypes.includes(file.type)) {
+    throw new Error('Formato inválido. Envie apenas PNG, JPG, JPEG ou SVG.');
+  }
+
   const ext = file.name.split('.').pop() || 'png';
-  // Bucket público dedicado: a primeira pasta é o organization_id (usado pelas policies RLS)
   const path = `${orgId}/logo-${Date.now()}.${ext}`;
-  const { error: upErr } = await supabase.storage.from('company-logos').upload(path, file, {
+
+  // 3. Upload para o Supabase
+  const { error: upErr } = await supabase.storage.from('company-assets').upload(path, file, {
     upsert: true,
     contentType: file.type,
   });
-  if (upErr) throw upErr;
-  const { data } = supabase.storage.from('company-logos').getPublicUrl(path);
+
+  if (upErr) {
+    console.error('[STORAGE UPLOAD ERROR]', upErr);
+    if (upErr.message.includes('Bucket not found')) {
+      throw new Error('Não foi possível enviar a logo. Configuração de armazenamento não encontrada.');
+    }
+    throw new Error(`Erro ao enviar imagem: ${upErr.message}`);
+  }
+
+  // 4. Obter URL Pública
+  const { data } = supabase.storage.from('company-assets').getPublicUrl(path);
   return data.publicUrl;
 }
