@@ -29,7 +29,7 @@ interface EventModalProps {
 
 const EVENT_TYPES = [
   { value: 'meeting', label: '🤝 Reunião', color: 'bg-blue-500' },
-  { value: 'call', label: '📞 Ligação', color: 'bg-green-500' },
+  { value: 'call', label: '📞 Ligação', color: 'bg-primary-500' },
   { value: 'demo', label: '🎯 Demo', color: 'bg-purple-500' },
   { value: 'follow_up', label: '📋 Follow-up', color: 'bg-orange-500' },
   { value: 'other', label: '📌 Outro', color: 'bg-gray-500' },
@@ -386,7 +386,7 @@ export function EventModal({ open, onOpenChange, event, defaultDate, defaultLead
           {/* Google Meet Toggle */}
           {isConnected && (
             <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border">
-              <Video className="h-5 w-5 text-green-600" />
+              <Video className="h-5 w-5 text-primary-600" />
               <div className="flex-1">
                 <Label htmlFor="create_meet" className="text-sm font-medium">
                   Criar Google Meet
@@ -405,15 +405,15 @@ export function EventModal({ open, onOpenChange, event, defaultDate, defaultLead
 
           {/* Show existing Meet link */}
           {event?.meet_link && (
-            <div className="flex items-center gap-2 p-3 rounded-lg bg-green-500/10 border border-green-500/30">
-              <Video className="h-5 w-5 text-green-600" />
+            <div className="flex items-center gap-2 p-3 rounded-lg bg-primary-500/10 border border-primary-500/30">
+              <Video className="h-5 w-5 text-primary-600" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-green-700 dark:text-green-400">Link do Google Meet</p>
+                <p className="text-sm font-medium text-primary-700 dark:text-primary-400">Link do Google Meet</p>
                 <a 
                   href={event.meet_link} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-xs text-green-600 hover:underline break-all"
+                  className="text-xs text-primary-600 hover:underline break-all"
                 >
                   {event.meet_link}
                 </a>

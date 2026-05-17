@@ -163,9 +163,9 @@ export const StageEditForm = forwardRef<StageEditFormRef, StageEditFormProps>(({
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 pt-2">
-          <div className="flex items-center justify-between p-2.5 sm:p-3 rounded-lg border bg-emerald-500/5 border-emerald-500/20">
+          <div className="flex items-center justify-between p-2.5 sm:p-3 rounded-lg border bg-primary-500/5 border-primary-500/20">
             <div className="flex items-center gap-2">
-              <Trophy className="h-4 w-4 text-emerald-600 shrink-0" />
+              <Trophy className="h-4 w-4 text-primary-600 shrink-0" />
               <Label htmlFor="is-won" className="text-xs sm:text-sm font-normal cursor-pointer">
                 Ganho
               </Label>

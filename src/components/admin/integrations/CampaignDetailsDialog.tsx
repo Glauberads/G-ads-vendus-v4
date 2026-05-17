@@ -55,8 +55,8 @@ export function CampaignDetailsDialog({ campaign, open, onClose }: CampaignDetai
               <p className="text-2xl font-bold">{campaign.stats.total}</p>
               <p className="text-sm text-muted-foreground">Total</p>
             </div>
-            <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg text-center">
-              <p className="text-2xl font-bold text-green-600">{campaign.stats.sent}</p>
+            <div className="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+              <p className="text-2xl font-bold text-primary-600">{campaign.stats.sent}</p>
               <p className="text-sm text-muted-foreground">Enviados</p>
             </div>
             <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg text-center">

@@ -31,7 +31,7 @@ const CHANNEL_ICON = {
   email: <Mail className="h-4 w-4 text-blue-500" />,
   both: (
     <div className="flex items-center -space-x-0.5">
-      <MessageCircle className="h-4 w-4 text-emerald-500" />
+      <MessageCircle className="h-4 w-4 text-primary-500" />
       <Mail className="h-4 w-4 text-blue-500" />
     </div>
   ),

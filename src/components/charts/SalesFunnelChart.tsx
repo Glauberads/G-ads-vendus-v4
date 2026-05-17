@@ -20,13 +20,13 @@ interface SalesFunnelChartProps {
 function ConversionBadge({ rate }: { rate: number }) {
   const color =
     rate >= 70
-      ? 'text-emerald-500'
+      ? 'text-primary-500'
       : rate >= 40
       ? 'text-amber-500'
       : 'text-red-500';
   const bg =
     rate >= 70
-      ? 'bg-emerald-500/10'
+      ? 'bg-primary-500/10'
       : rate >= 40
       ? 'bg-amber-500/10'
       : 'bg-red-500/10';
@@ -210,8 +210,8 @@ export function SalesFunnelChart({ stages, isLoading, wonCount = 0, lostCount = 
             transition={{ delay: chartData.length * 0.1 + 0.3 }}
           >
             {wonCount > 0 && (
-              <div className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full font-medium">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block" />
+              <div className="flex items-center gap-1.5 text-xs text-primary-600 dark:text-primary-400 bg-primary-500/10 px-2.5 py-1 rounded-full font-medium">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary-500 inline-block" />
                 {wonCount} ganhos ({totalCount > 0 ? Math.round((wonCount / totalCount) * 100) : 0}%)
               </div>
             )}

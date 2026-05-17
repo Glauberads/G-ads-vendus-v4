@@ -105,14 +105,14 @@ function getFilledCount(answers: Record<string, string>): number {
 }
 
 function getScoreColor(score: number): string {
-  if (score >= 76) return 'text-emerald-600';
+  if (score >= 76) return 'text-primary-600';
   if (score >= 51) return 'text-amber-600';
   if (score >= 26) return 'text-orange-500';
   return 'text-destructive';
 }
 
 function getProgressColor(score: number): string {
-  if (score >= 76) return '[&>div]:bg-emerald-500';
+  if (score >= 76) return '[&>div]:bg-primary-500';
   if (score >= 51) return '[&>div]:bg-amber-500';
   if (score >= 26) return '[&>div]:bg-orange-500';
   return '[&>div]:bg-destructive';
@@ -202,7 +202,7 @@ export function LeadBANTTab({ lead, onUpdateLead }: LeadBANTTabProps) {
               <p className="text-sm">{summary.text}</p>
               {completeCats.length > 0 && (
                 <p className="text-xs text-muted-foreground">
-                  <span className="text-emerald-600 font-medium">✓ Completos:</span> {completeCats.join(', ')}
+                  <span className="text-primary-600 font-medium">✓ Completos:</span> {completeCats.join(', ')}
                 </p>
               )}
               {pendingCats.length > 0 && (
@@ -231,7 +231,7 @@ export function LeadBANTTab({ lead, onUpdateLead }: LeadBANTTabProps) {
                   </span>
                   <Badge
                     variant={stats.complete ? 'default' : 'secondary'}
-                    className={stats.complete ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20' : ''}
+                    className={stats.complete ? 'bg-primary-500/10 text-primary-600 border-primary-500/20' : ''}
                   >
                     {stats.complete && <CheckCircle2 className="h-3 w-3 mr-1" />}
                     {stats.filled}/{stats.total}

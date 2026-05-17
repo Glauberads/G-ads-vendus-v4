@@ -120,9 +120,9 @@ export function NextTask({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: delay * 0.1 }}
       >
-        <Card className="p-4 bg-gradient-to-br from-green-500/10 to-primary/5 border-green-500/20">
+        <Card className="p-4 bg-gradient-to-br from-primary-500/10 to-primary/5 border-primary-500/20">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-green-500/20 flex items-center justify-center">
+            <div className="h-10 w-10 rounded-xl bg-primary-500/20 flex items-center justify-center">
               <CheckCircle2 size={20} className="text-green-500" />
             </div>
             <div className="flex-1">

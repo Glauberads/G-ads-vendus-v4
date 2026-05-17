@@ -125,7 +125,7 @@ export function StatCardPremium({
                 <motion.div 
                   className={cn(
                     "flex items-center gap-0.5 text-[10px] font-semibold px-1.5 py-0.5 rounded-full",
-                    trendDirection === 'up' && "bg-green-500/10 text-green-600",
+                    trendDirection === 'up' && "bg-primary-500/10 text-primary-600",
                     trendDirection === 'down' && "bg-red-500/10 text-red-600"
                   )}
                   initial={{ opacity: 0, x: 10 }}

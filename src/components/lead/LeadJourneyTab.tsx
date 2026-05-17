@@ -93,7 +93,7 @@ export function LeadJourneyTab({ leadId, currentStageId, stages }: LeadJourneyTa
                     ${stage.isCurrent 
                       ? 'border-primary bg-primary/10' 
                       : stage.isPast 
-                        ? 'border-green-500 bg-green-500/10' 
+                        ? 'border-primary-500 bg-primary-500/10' 
                         : 'border-muted bg-muted/30'
                     }
                   `}
@@ -142,7 +142,7 @@ export function LeadJourneyTab({ leadId, currentStageId, stages }: LeadJourneyTa
                 className={`
                   absolute left-0 -translate-x-1/2 h-4 w-4 rounded-full border-2
                   ${stage.isPast 
-                    ? 'bg-green-500 border-green-500' 
+                    ? 'bg-primary-500 border-primary-500' 
                     : stage.isCurrent 
                       ? 'bg-primary border-primary' 
                       : 'bg-background border-muted'
@@ -185,7 +185,7 @@ export function LeadJourneyTab({ leadId, currentStageId, stages }: LeadJourneyTa
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card>
           <CardContent className="pt-4 text-center">
-            <p className="text-2xl font-bold text-green-500">
+            <p className="text-2xl font-bold text-primary-500">
               {journeyData.filter(s => s.isPast).length}
             </p>
             <p className="text-xs text-muted-foreground">Estágios concluídos</p>

@@ -187,7 +187,7 @@ function AgendaCalendarView() {
             <span className="text-sm font-semibold">{stats.total}</span>
           </div>
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/40">
-            <List className="h-4 w-4 text-green-500" />
+            <List className="h-4 w-4 text-primary-500" />
             <span className="text-xs text-muted-foreground">Tipos</span>
             <span className="flex gap-0.5 text-sm">🤝 📞 🎯</span>
           </div>

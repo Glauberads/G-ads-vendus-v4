@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 
 const EVENT_TYPE_COLORS: Record<string, string> = {
   meeting: 'bg-blue-500',
-  call: 'bg-green-500',
+  call: 'bg-primary-500',
   demo: 'bg-purple-500',
   follow_up: 'bg-amber-500',
   task: 'bg-cyan-500',

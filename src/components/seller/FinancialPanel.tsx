@@ -65,7 +65,7 @@ export function FinancialPanel({ productId, productName }: FinancialPanelProps) 
             <DollarSign className={cn("text-green-500", isMobile ? "h-4 w-4" : "h-4 w-4")} />
           </CardHeader>
           <CardContent className={isMobile ? "p-4 pt-0" : ""}>
-            <div className={cn("font-bold text-green-600", isMobile ? "text-xl" : "text-2xl")}>
+            <div className={cn("font-bold text-primary-600", isMobile ? "text-xl" : "text-2xl")}>
               R$ {(commissionsSummary?.paid || 0).toLocaleString('pt-BR')}
             </div>
             <p className="text-xs text-muted-foreground">Este mês</p>
@@ -220,7 +220,7 @@ export function FinancialPanel({ productId, productName }: FinancialPanelProps) 
                     </div>
                     <div className="text-right">
                       <p className="text-xs text-muted-foreground">Comissão</p>
-                      <p className="text-sm font-bold text-green-600">
+                      <p className="text-sm font-bold text-primary-600">
                         R$ {Number(commission.amount).toLocaleString('pt-BR')}
                       </p>
                     </div>
@@ -257,7 +257,7 @@ export function FinancialPanel({ productId, productName }: FinancialPanelProps) 
                     <TableCell>
                       R$ {(commission.deals?.deal_value || 0).toLocaleString('pt-BR')}
                     </TableCell>
-                    <TableCell className="font-medium text-green-600">
+                    <TableCell className="font-medium text-primary-600">
                       R$ {Number(commission.amount).toLocaleString('pt-BR')}
                     </TableCell>
                     <TableCell>

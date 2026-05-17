@@ -27,7 +27,7 @@ interface BrainHealthScoreProps {
 
 export function BrainHealthScore({ score, stats }: BrainHealthScoreProps) {
   const getScoreColor = () => {
-    if (score >= 80) return 'text-green-500';
+    if (score >= 80) return 'text-primary-500';
     if (score >= 50) return 'text-yellow-500';
     return 'text-red-500';
   };
@@ -71,7 +71,7 @@ export function BrainHealthScore({ score, stats }: BrainHealthScoreProps) {
                 <div className="relative">
                   <div className={cn(
                     'w-16 h-16 rounded-full border-4 flex items-center justify-center',
-                    score >= 80 ? 'border-green-500/30' : score >= 50 ? 'border-yellow-500/30' : 'border-red-500/30'
+                    score >= 80 ? 'border-primary-500/30' : score >= 50 ? 'border-yellow-500/30' : 'border-red-500/30'
                   )}>
                     <span className={cn('text-xl font-bold', getScoreColor())}>
                       {score}%
@@ -79,7 +79,7 @@ export function BrainHealthScore({ score, stats }: BrainHealthScoreProps) {
                   </div>
                   <Brain className={cn(
                     'absolute -bottom-1 -right-1 h-5 w-5 p-1 rounded-full',
-                    score >= 80 ? 'bg-green-500 text-white' : score >= 50 ? 'bg-yellow-500 text-white' : 'bg-red-500 text-white'
+                    score >= 80 ? 'bg-primary-500 text-white' : score >= 50 ? 'bg-yellow-500 text-white' : 'bg-red-500 text-white'
                   )} />
                 </div>
                 <div>

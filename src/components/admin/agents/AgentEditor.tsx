@@ -803,7 +803,7 @@ export function AgentEditor({
                       </div>
                     </div>
                   ) : (
-                    <div className="rounded-md border border-emerald-500/50 bg-emerald-500/10 p-3 text-xs text-emerald-700 dark:text-emerald-400 flex items-start gap-2">
+                    <div className="rounded-md border border-primary-500/50 bg-primary-500/10 p-3 text-xs text-primary-700 dark:text-primary-400 flex items-start gap-2">
                       <span className="text-base leading-none mt-0.5">🌐</span>
                       <div>
                         <strong>Agente global.</strong> Este agente pode rotear conversas

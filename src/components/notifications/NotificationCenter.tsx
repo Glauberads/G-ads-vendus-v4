@@ -47,7 +47,7 @@ const typeConfig: Record<string, { icon: React.ReactNode; color: string }> = {
   },
   audit: { 
     icon: <CheckCircle2 className="h-4 w-4" />, 
-    color: 'text-green-500 bg-green-500/10' 
+    color: 'text-primary-500 bg-primary-500/10' 
   },
   system: { 
     icon: <Bell className="h-4 w-4" />, 

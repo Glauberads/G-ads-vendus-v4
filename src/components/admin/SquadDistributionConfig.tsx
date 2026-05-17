@@ -102,7 +102,7 @@ export function SquadDistributionConfig({ squadId, organizationId }: SquadDistri
         {/* Status indicators */}
         <div className="flex gap-3">
           <Badge variant="outline" className="gap-1.5">
-            <CircleDot className="h-3 w-3 text-green-500" />
+            <CircleDot className="h-3 w-3 text-primary-500" />
             {onlineCount} online
           </Badge>
           <Badge variant="outline" className="gap-1.5">

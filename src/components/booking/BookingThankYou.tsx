@@ -137,7 +137,7 @@ END:VCALENDAR`;
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-                className="w-20 h-20 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-4 shadow-lg"
+                className="w-20 h-20 rounded-full bg-primary-500 flex items-center justify-center mx-auto mb-4 shadow-lg"
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}

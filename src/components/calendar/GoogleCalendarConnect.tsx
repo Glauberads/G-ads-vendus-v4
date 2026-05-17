@@ -165,8 +165,8 @@ export function GoogleCalendarConnect() {
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
-              <CalendarDays className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <div className="p-2 rounded-lg bg-primary-100 dark:bg-primary-900/30">
+              <CalendarDays className="h-5 w-5 text-primary-600 dark:text-primary-400" />
             </div>
             <div>
               <CardTitle className="text-base flex items-center gap-2">

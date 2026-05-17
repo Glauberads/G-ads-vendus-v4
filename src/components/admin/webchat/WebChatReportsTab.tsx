@@ -159,7 +159,7 @@ export function WebChatReportsTab() {
               </div>
               <div className="h-2 bg-muted rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-green-500 rounded-full transition-all"
+                  className="h-full bg-primary-500 rounded-full transition-all"
                   style={{ 
                     width: `${totalConversations > 0 
                       ? (conversations.filter(c => c.status === 'human_active').length / totalConversations) * 100 

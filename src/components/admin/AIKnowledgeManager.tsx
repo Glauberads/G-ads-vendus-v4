@@ -22,7 +22,7 @@ const categoryConfig: Record<string, { label: string; icon: typeof Brain; color:
   general: { label: 'Geral', icon: BookOpen, color: 'bg-blue-500/10 text-blue-600' },
   faq: { label: 'FAQ', icon: HelpCircle, color: 'bg-violet-500/10 text-violet-600' },
   objection: { label: 'Objeção', icon: MessageSquare, color: 'bg-amber-500/10 text-amber-600' },
-  script: { label: 'Script', icon: Lightbulb, color: 'bg-emerald-500/10 text-emerald-600' },
+  script: { label: 'Script', icon: Lightbulb, color: 'bg-primary-500/10 text-primary-600' },
   product: { label: 'Produto', icon: Brain, color: 'bg-red-500/10 text-red-600' },
 };
 

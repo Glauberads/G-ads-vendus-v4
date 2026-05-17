@@ -27,7 +27,7 @@ export function LeadFormResponses({ metadata }: LeadFormResponsesProps) {
   };
 
   const getScoreColor = (score: number): string => {
-    if (score >= 70) return 'text-green-500 bg-green-500/10';
+    if (score >= 70) return 'text-primary-500 bg-primary-500/10';
     if (score >= 40) return 'text-yellow-500 bg-yellow-500/10';
     return 'text-red-500 bg-red-500/10';
   };

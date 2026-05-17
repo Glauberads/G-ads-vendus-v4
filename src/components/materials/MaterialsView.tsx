@@ -26,7 +26,7 @@ interface MaterialsViewProps {
 const typeConfig = {
   pdf: { icon: FileText, color: 'text-red-400' },
   video: { icon: Video, color: 'text-purple-400' },
-  image: { icon: Image, color: 'text-green-400' },
+  image: { icon: Image, color: 'text-primary-400' },
   link: { icon: Link2, color: 'text-blue-400' },
   banner: { icon: Flag, color: 'text-yellow-400' },
 };

@@ -36,7 +36,7 @@ const blockTypeConfig = {
   message: { icon: MessageSquare, label: 'Mensagem', color: 'text-blue-500' },
   audio: { icon: Mic, label: 'Áudio', color: 'text-purple-500' },
   material: { icon: FileText, label: 'Material', color: 'text-orange-500' },
-  cta: { icon: MousePointer, label: 'CTA', color: 'text-green-500' },
+  cta: { icon: MousePointer, label: 'CTA', color: 'text-primary-500' },
   image: { icon: Image, label: 'Imagem', color: 'text-pink-500' },
   video: { icon: Video, label: 'Vídeo', color: 'text-red-500' },
   link: { icon: Link, label: 'Link', color: 'text-cyan-500' },

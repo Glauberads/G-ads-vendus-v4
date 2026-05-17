@@ -186,7 +186,7 @@ export function FormLivePreview({ form, blocks, theme, onComplete }: FormLivePre
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: 'spring', stiffness: 300, damping: 15, delay: 0.2 }}
-            className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center mb-6 shadow-lg shadow-green-500/30"
+            className="w-20 h-20 rounded-full bg-gradient-to-br from-primary-400 to-primary-500 flex items-center justify-center mb-6 shadow-lg shadow-primary-500/30"
           >
             <Check className="h-10 w-10 text-white" />
           </motion.div>
@@ -428,7 +428,7 @@ export function FormLivePreview({ form, blocks, theme, onComplete }: FormLivePre
             
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: true, label: 'Sim', key: 'Y', color: 'from-green-500 to-emerald-500' },
+                { value: true, label: 'Sim', key: 'Y', color: 'from-primary-500 to-primary-500' },
                 { value: false, label: 'Não', key: 'N', color: 'from-red-500 to-rose-500' },
               ].map((opt, idx) => {
                 const isSelected = responses[block.id] === opt.value;

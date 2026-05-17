@@ -133,8 +133,8 @@ export function AutoNotificationSettings() {
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-green-500/10">
-                  <Target className="h-5 w-5 text-green-500" />
+                <div className="p-2 rounded-lg bg-primary-500/10">
+                  <Target className="h-5 w-5 text-primary-500" />
                 </div>
                 <div>
                   <CardTitle className="text-base">Meta Atingida</CardTitle>
@@ -156,7 +156,7 @@ export function AutoNotificationSettings() {
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-emerald-500/10">
+                <div className="p-2 rounded-lg bg-primary-500/10">
                   <DollarSign className="h-5 w-5 text-emerald-500" />
                 </div>
                 <div>

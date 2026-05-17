@@ -44,7 +44,7 @@ const categoryConfig = {
   timing: { label: 'Timing', icon: Clock, color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' },
   trust: { label: 'Confiança', icon: Shield, color: 'bg-purple-500/10 text-purple-500 border-purple-500/20' },
   thinking: { label: 'Vou pensar', icon: Brain, color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
-  partner: { label: 'Sócio/Diretor', icon: Users, color: 'bg-green-500/10 text-green-500 border-green-500/20' },
+  partner: { label: 'Sócio/Diretor', icon: Users, color: 'bg-primary-500/10 text-primary-500 border-primary-500/20' },
   competitor: { label: 'Concorrência', icon: Swords, color: 'bg-red-500/10 text-red-500 border-red-500/20' },
 };
 

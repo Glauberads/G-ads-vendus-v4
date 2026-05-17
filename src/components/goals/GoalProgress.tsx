@@ -69,7 +69,7 @@ export function GoalProgress({ productId }: GoalProgressProps) {
     <Card className="p-6 relative overflow-hidden">
       {/* Background decoration */}
       {isAchieved && (
-        <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-transparent" />
       )}
 
       <div className="relative">

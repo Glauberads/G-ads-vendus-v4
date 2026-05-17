@@ -393,7 +393,7 @@ export function OrganizationDetailPage({ orgId, onBack }: OrganizationDetailPage
                   <span className="text-sm text-muted-foreground">Status:</span>
                   <Badge className={
                     org.status === 'active' 
-                      ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20'
+                      ? 'bg-primary-500/10 text-primary-500 border-primary-500/20'
                       : 'bg-amber-500/10 text-amber-500 border-amber-500/20'
                   }>
                     {org.status === 'active' ? 'Ativo' : org.status}
@@ -868,7 +868,7 @@ export function OrganizationDetailPage({ orgId, onBack }: OrganizationDetailPage
                       <p className="text-sm text-muted-foreground">Status</p>
                       <Badge className={
                         subscription.status === 'active'
-                          ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20 mt-1'
+                          ? 'bg-primary-500/10 text-primary-500 border-primary-500/20 mt-1'
                           : 'bg-amber-500/10 text-amber-500 border-amber-500/20 mt-1'
                       }>
                         {subscription.status === 'active' ? 'Ativo' : subscription.status}

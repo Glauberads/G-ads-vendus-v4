@@ -88,7 +88,7 @@ export function KanbanLeadCard({ lead, stageColor, onViewDetails }: KanbanLeadCa
       {/* Value */}
       {lead.deal_value > 0 && (
         <div className="flex items-center gap-1.5 mb-3">
-          <div className="flex items-center gap-1 px-2 py-1 bg-emerald-500/10 text-emerald-600 rounded-md">
+          <div className="flex items-center gap-1 px-2 py-1 bg-primary-500/10 text-primary-600 rounded-md">
             <DollarSign className="h-3.5 w-3.5" />
             <span className="text-sm font-semibold">{formatCurrency(lead.deal_value)}</span>
           </div>

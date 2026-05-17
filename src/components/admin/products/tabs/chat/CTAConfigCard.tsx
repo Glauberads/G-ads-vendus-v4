@@ -42,7 +42,7 @@ const CTA_TYPES = [
 ] as const;
 
 const INTENT_LEVELS = [
-  { value: 'high', label: 'Alta (pronto para comprar)', color: 'text-green-600' },
+  { value: 'high', label: 'Alta (pronto para comprar)', color: 'text-primary-600' },
   { value: 'medium', label: 'Média (interessado)', color: 'text-yellow-600' },
   { value: 'low', label: 'Baixa (explorando)', color: 'text-blue-600' },
 ] as const;

@@ -21,7 +21,7 @@ const scopeLabels: Record<string, { label: string; icon: React.ReactNode }> = {
 const typeColors: Record<string, string> = {
   system: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
   urgency: 'bg-red-500/10 text-red-500 border-red-500/20',
-  opportunity: 'bg-green-500/10 text-green-500 border-green-500/20',
+  opportunity: 'bg-primary-500/10 text-primary-500 border-primary-500/20',
   cadence: 'bg-purple-500/10 text-purple-500 border-purple-500/20',
   audit: 'bg-orange-500/10 text-orange-500 border-orange-500/20',
 };
@@ -87,8 +87,8 @@ export function NotificationManager() {
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-lg bg-green-500/10">
-                    <Users className="h-6 w-6 text-green-500" />
+                  <div className="p-3 rounded-lg bg-primary-500/10">
+                    <Users className="h-6 w-6 text-primary-500" />
                   </div>
                   <div>
                     <p className="text-2xl font-bold">

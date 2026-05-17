@@ -14,7 +14,7 @@ import { ptBR } from 'date-fns/locale';
 import { PaymentMethodBadge } from './PaymentMethodBadge';
 
 const STATUS_LABELS: Record<string, { label: string; className: string }> = {
-  paid: { label: 'Pago', className: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20' },
+  paid: { label: 'Pago', className: 'bg-primary-500/10 text-primary-600 border-primary-500/20' },
   refunded: { label: 'Reembolsado', className: 'bg-amber-500/10 text-amber-600 border-amber-500/20' },
   pending: { label: 'Pendente', className: 'bg-blue-500/10 text-blue-600 border-blue-500/20' },
   waiting_payment: { label: 'Aguardando', className: 'bg-blue-500/10 text-blue-600 border-blue-500/20' },
@@ -29,7 +29,7 @@ interface Props {
 }
 
 const PROVIDER_META: Record<string, { label: string; className: string }> = {
-  cakto: { label: 'Cakto', className: 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20' },
+  cakto: { label: 'Cakto', className: 'bg-primary-500/10 text-primary-700 border-primary-500/20' },
   doppus: { label: 'Doppus', className: 'bg-violet-500/10 text-violet-700 border-violet-500/20' },
   hotmart: { label: 'Hotmart', className: 'bg-orange-500/10 text-orange-700 border-orange-500/20' },
   kiwify: { label: 'Kiwify', className: 'bg-blue-500/10 text-blue-700 border-blue-500/20' },

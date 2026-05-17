@@ -17,7 +17,7 @@ const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
 const CATEGORY_COLORS: Record<string, string> = {
   screen: 'bg-purple-500',
   input: 'bg-blue-500',
-  selection: 'bg-green-500',
+  selection: 'bg-primary-500',
   logic: 'bg-orange-500',
   advanced: 'bg-pink-500',
 };

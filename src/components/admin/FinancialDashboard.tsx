@@ -183,10 +183,10 @@ export function FinancialDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Comissões Pagas</CardTitle>
-            <TrendingUp className="h-4 w-4 text-green-500" />
+            <TrendingUp className="h-4 w-4 text-primary-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-600">
+            <div className="text-2xl font-bold text-primary-600">
               R$ {(commissionsSummary?.paid || 0).toLocaleString('pt-BR')}
             </div>
             <p className="text-xs text-muted-foreground">
@@ -273,7 +273,7 @@ export function FinancialDashboard() {
                         <TableCell>
                           R$ {(commission.deals?.deal_value || 0).toLocaleString('pt-BR')}
                         </TableCell>
-                        <TableCell className="font-medium text-green-600">
+                        <TableCell className="font-medium text-primary-600">
                           R$ {Number(commission.amount).toLocaleString('pt-BR')}
                         </TableCell>
                         <TableCell>

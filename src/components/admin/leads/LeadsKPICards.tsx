@@ -100,8 +100,8 @@ export function LeadsKPICards({ stats, isLoading }: LeadsKPICardsProps) {
               
               {card.key === 'total' && stats && (
                 <div className="mt-3 flex items-center gap-1 text-xs text-muted-foreground">
-                  <TrendingUp className="h-3 w-3 text-emerald-500" />
-                  <span className="text-emerald-500 font-medium">+12%</span>
+                  <TrendingUp className="h-3 w-3 text-primary-500" />
+                  <span className="text-primary-500 font-medium">+12%</span>
                   <span>vs. mês anterior</span>
                 </div>
               )}

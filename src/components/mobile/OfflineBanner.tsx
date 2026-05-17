@@ -50,7 +50,7 @@ export function OfflineBanner() {
         >
           <div className={`mx-4 mt-2 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg ${
             isOnline 
-              ? 'bg-green-500/90 backdrop-blur-sm' 
+              ? 'bg-primary-500/90 backdrop-blur-sm' 
               : 'bg-orange-500/90 backdrop-blur-sm'
           }`}>
             {isOnline ? (

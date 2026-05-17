@@ -85,7 +85,7 @@ export function NotificationsAutomationTab({ eventTypeId }: Props) {
               <ChannelToggle
                 checked={!!draft.send_whatsapp}
                 onChange={(v) => update('send_whatsapp', v)}
-                icon={<MessageCircle className="h-4 w-4 text-emerald-500" />}
+                icon={<MessageCircle className="h-4 w-4 text-primary-500" />}
                 label="Enviar confirmação por WhatsApp"
               />
             </div>
@@ -104,7 +104,7 @@ export function NotificationsAutomationTab({ eventTypeId }: Props) {
                   <SelectValue placeholder="Selecione uma instância">
                     {selectedInstance ? (
                       <div className="flex items-center gap-2">
-                        <MessageCircle className="h-4 w-4 text-emerald-500" />
+                        <MessageCircle className="h-4 w-4 text-primary-500" />
                         <span>{selectedInstance.name}</span>
                       </div>
                     ) : (
@@ -117,7 +117,7 @@ export function NotificationsAutomationTab({ eventTypeId }: Props) {
                   {instances.map((i) => (
                     <SelectItem key={i.id} value={i.id}>
                       <div className="flex items-center gap-2">
-                        <MessageCircle className="h-4 w-4 text-emerald-500" />
+                        <MessageCircle className="h-4 w-4 text-primary-500" />
                         <span>{i.name}</span>
                         {i.phone_number && (
                           <span className="text-xs text-muted-foreground">{i.phone_number}</span>

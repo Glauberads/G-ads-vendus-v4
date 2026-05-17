@@ -293,7 +293,7 @@ export function TeamBookingLinks() {
                                 size="sm"
                                 variant="outline"
                                 onClick={() => handleWhatsApp(url, member.full_name)}
-                                className="gap-1.5 text-green-600 hover:text-green-700"
+                                className="gap-1.5 text-primary-600 hover:text-primary-700"
                               >
                                 <MessageCircle className="h-3.5 w-3.5" />
                                 <span className="hidden sm:inline">WhatsApp</span>

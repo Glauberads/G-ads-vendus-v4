@@ -173,7 +173,7 @@ export function LeadSummaryTab({ lead, stagesCount = 7, interactionsCount = 0, o
       />
 
       {/* Deal Value */}
-      <Card className="border-emerald-500/30 bg-emerald-500/5">
+      <Card className="border-primary-500/30 bg-primary-500/5">
         <CardHeader className="pb-3">
           <CardTitle className="text-base font-medium text-muted-foreground flex items-center gap-2">
             <DollarSign className="h-5 w-5 text-emerald-500" />
@@ -224,7 +224,7 @@ export function LeadSummaryTab({ lead, stagesCount = 7, interactionsCount = 0, o
                   disabled={isSaving}
                 />
               </div>
-              <Button size="icon" variant="ghost" onClick={handleSaveValue} disabled={isSaving} className="h-10 w-10 text-emerald-500 hover:text-emerald-600 hover:bg-emerald-500/10">
+              <Button size="icon" variant="ghost" onClick={handleSaveValue} disabled={isSaving} className="h-10 w-10 text-primary-500 hover:text-primary-600 hover:bg-primary-500/10">
                 <Check className="h-5 w-5" />
               </Button>
               <Button size="icon" variant="ghost" onClick={handleCancelEdit} disabled={isSaving} className="h-10 w-10">
@@ -235,7 +235,7 @@ export function LeadSummaryTab({ lead, stagesCount = 7, interactionsCount = 0, o
             <div className="flex items-center gap-3">
               <button
                 onClick={handleStartEdit}
-                className="text-3xl font-bold text-emerald-600 hover:text-emerald-500 transition-colors cursor-pointer bg-transparent border-none p-0"
+                className="text-3xl font-bold text-primary-600 hover:text-primary-500 transition-colors cursor-pointer bg-transparent border-none p-0"
                 disabled={!onUpdateLead || (hasPlans && !!selectedPlanId)}
               >
                 {formatCurrency(lead.deal_value || 0)}

@@ -66,7 +66,7 @@ export function SuperAdminDashboard({ onNavigate }: SuperAdminDashboardProps = {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">ARR Total</CardTitle>
-            <TrendingUp className="h-4 w-4 text-emerald-500" />
+            <TrendingUp className="h-4 w-4 text-primary-500" />
           </CardHeader>
           <CardContent>
             {statsLoading ? (
@@ -171,12 +171,12 @@ export function SuperAdminDashboard({ onNavigate }: SuperAdminDashboardProps = {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Saúde</CardTitle>
-            <Activity className="h-4 w-4 text-emerald-500" />
+            <Activity className="h-4 w-4 text-primary-500" />
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5 text-emerald-500" />
-              <span className="text-lg font-semibold text-emerald-500">Operacional</span>
+              <span className="text-lg font-semibold text-primary-500">Operacional</span>
             </div>
             <p className="text-xs text-muted-foreground">Todos os serviços ok</p>
           </CardContent>

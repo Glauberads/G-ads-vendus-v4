@@ -73,8 +73,8 @@ export function MobileProductDashboard({ product, onNavigate }: MobileProductDas
       label: 'Conversão',
       value: stats?.conversionRate || 0,
       icon: TrendingUp,
-      color: 'text-green-500',
-      bgColor: 'bg-green-500/10',
+      color: 'text-primary-500',
+      bgColor: 'bg-primary-500/10',
       format: 'percentage' as const,
       trend: trends?.conversionChange,
       sparklineData: sparklineData?.conversion,
@@ -141,7 +141,7 @@ export function MobileProductDashboard({ product, onNavigate }: MobileProductDas
             <motion.span 
               className={cn(
                 "text-lg font-bold",
-                goalProgress >= 100 ? "text-green-500" : "text-primary"
+                goalProgress >= 100 ? "text-primary-500" : "text-primary"
               )}
               animate={goalProgress >= 100 ? { scale: [1, 1.1, 1] } : undefined}
               transition={{ repeat: goalProgress >= 100 ? Infinity : 0, duration: 2 }}
@@ -169,7 +169,7 @@ export function MobileProductDashboard({ product, onNavigate }: MobileProductDas
               <span className="text-xs text-primary font-medium">Quase lá! 🔥</span>
             )}
             {goalProgress >= 100 && (
-              <span className="text-xs text-green-500 font-medium">Meta atingida! 🎉</span>
+              <span className="text-xs text-primary-500 font-medium">Meta atingida! 🎉</span>
             )}
           </div>
         </Card>
@@ -246,7 +246,7 @@ export function MobileProductDashboard({ product, onNavigate }: MobileProductDas
                   </div>
                   <div className="flex items-center gap-1">
                     <Button size="icon" variant="ghost" className="h-8 w-8">
-                      <Phone size={14} className="text-green-500" />
+                      <Phone size={14} className="text-primary-500" />
                     </Button>
                     <Button size="icon" variant="ghost" className="h-8 w-8">
                       <MessageSquare size={14} className="text-primary" />

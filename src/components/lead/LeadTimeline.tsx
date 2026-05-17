@@ -111,7 +111,7 @@ export function LeadTimeline({ leadId, maxHeight = "400px" }: LeadTimelineProps)
                         <div className={cn(
                           "h-6 w-6 rounded-full flex items-center justify-center",
                           item.direction === 'inbound' 
-                            ? "bg-green-500/10 text-green-500" 
+                            ? "bg-primary-500/10 text-primary-500" 
                             : "bg-blue-500/10 text-blue-500"
                         )}>
                           {channelIcons[item.channel]}

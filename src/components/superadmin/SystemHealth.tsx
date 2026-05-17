@@ -82,19 +82,19 @@ export function SystemHealth() {
       </div>
 
       {/* Overall Status */}
-      <Card className={allOperational ? 'border-emerald-500/50' : 'border-amber-500/50'}>
+      <Card className={allOperational ? 'border-primary-500/50' : 'border-amber-500/50'}>
         <CardContent className="pt-6">
           <div className="flex items-center gap-4">
             <div className={`w-16 h-16 rounded-full flex items-center justify-center ${
-              allOperational ? 'bg-emerald-500/10' : 'bg-amber-500/10'
+              allOperational ? 'bg-primary-500/10' : 'bg-amber-500/10'
             }`}>
               <Activity className={`h-8 w-8 ${
-                allOperational ? 'text-emerald-500' : 'text-amber-500'
+                allOperational ? 'text-primary-500' : 'text-amber-500'
               }`} />
             </div>
             <div>
               <h2 className={`text-2xl font-bold ${
-                allOperational ? 'text-emerald-500' : 'text-amber-500'
+                allOperational ? 'text-primary-500' : 'text-amber-500'
               }`}>
                 {allOperational ? 'Todos os Sistemas Operacionais' : 'Alguns Serviços Degradados'}
               </h2>

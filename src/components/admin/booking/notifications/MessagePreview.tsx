@@ -33,7 +33,7 @@ export function MessagePreview({ template, whatsappNumber }: Props) {
         </Badge>
       </div>
 
-      <div className="rounded-2xl bg-[#0b1418] border border-emerald-900/40 p-4 relative overflow-hidden">
+      <div className="rounded-2xl bg-[#0b1418] border border-primary-900/40 p-4 relative overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -42,7 +42,7 @@ export function MessagePreview({ template, whatsappNumber }: Props) {
             backgroundSize: '14px 14px',
           }}
         />
-        <div className="relative bg-[#005c4b]/20 border border-emerald-900/30 rounded-lg rounded-tl-none px-3 py-2 text-sm whitespace-pre-wrap text-foreground/90 font-medium leading-relaxed">
+        <div className="relative bg-[#005c4b]/20 border border-primary-900/30 rounded-lg rounded-tl-none px-3 py-2 text-sm whitespace-pre-wrap text-foreground/90 font-medium leading-relaxed">
           {rendered || (
             <span className="text-muted-foreground italic">
               A mensagem aparecerá aqui...

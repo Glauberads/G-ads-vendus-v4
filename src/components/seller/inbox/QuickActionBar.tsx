@@ -113,7 +113,7 @@ export function QuickActionBar({
             <Button
               variant="ghost"
               size="sm"
-              className="h-7 text-xs gap-1.5 shrink-0 text-green-600 hover:text-green-700"
+              className="h-7 text-xs gap-1.5 shrink-0 text-primary-600 hover:text-primary-700"
               onClick={onSendPaymentLink}
             >
               <CreditCard className="h-3.5 w-3.5" />
@@ -130,7 +130,7 @@ export function QuickActionBar({
             <Button
               variant="ghost"
               size="sm"
-              className="h-7 text-xs gap-1.5 shrink-0 text-emerald-600 hover:text-emerald-700"
+              className="h-7 text-xs gap-1.5 shrink-0 text-primary-600 hover:text-primary-700"
               onClick={onCreateEvent}
             >
               <CalendarPlus className="h-3.5 w-3.5" />

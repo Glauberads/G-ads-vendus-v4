@@ -509,7 +509,7 @@ export interface BlockPaletteItem {
 // Cores por categoria (HSL-based para theming)
 export const CATEGORY_COLORS: Record<BlockCategory, { bg: string; border: string; text: string }> = {
   experience: { bg: 'bg-blue-500/10', border: 'border-blue-500/30', text: 'text-blue-600' },
-  capture: { bg: 'bg-emerald-500/10', border: 'border-emerald-500/30', text: 'text-emerald-600' },
+  capture: { bg: 'bg-primary-500/10', border: 'border-primary-500/30', text: 'text-primary-600' },
   ai: { bg: 'bg-orange-500/10', border: 'border-orange-500/30', text: 'text-orange-600' },
   logic: { bg: 'bg-purple-500/10', border: 'border-purple-500/30', text: 'text-purple-600' },
   action: { bg: 'bg-rose-500/10', border: 'border-rose-500/30', text: 'text-rose-600' },
@@ -574,7 +574,7 @@ export const FUNNEL_BLOCK_PALETTE: BlockPaletteItem[] = [
     icon: '📝', 
     description: 'Capturar uma resposta', 
     category: 'capture',
-    color: 'bg-emerald-500'
+    color: 'bg-primary-500'
   },
   { 
     type: 'quick_form', 
@@ -582,7 +582,7 @@ export const FUNNEL_BLOCK_PALETTE: BlockPaletteItem[] = [
     icon: '📋', 
     description: 'Múltiplos campos inline', 
     category: 'capture',
-    color: 'bg-emerald-500'
+    color: 'bg-primary-500'
   },
   
   // ===== IA (Inteligência Artificial) =====

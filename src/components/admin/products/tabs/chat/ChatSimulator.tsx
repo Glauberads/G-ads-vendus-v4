@@ -362,7 +362,7 @@ export function ChatSimulator({ widgetId, productId, agentConfig }: ChatSimulato
                   <span>{sourcesByType.faq} FAQs</span>
                 </div>
                 <div className="flex items-center gap-2 p-2 rounded bg-muted/50">
-                  <Globe className="h-4 w-4 text-green-500" />
+                  <Globe className="h-4 w-4 text-primary-500" />
                   <span>{sourcesByType.website} Sites</span>
                 </div>
                 <div className="flex items-center gap-2 p-2 rounded bg-muted/50">

@@ -313,7 +313,7 @@ export function ConversationList({
                 className={cn(
                   'w-full text-left px-4 py-3.5 transition-all border-b border-border/40 relative',
                   'hover:bg-accent/40 group',
-                  selectedId === conv.id && 'bg-accent/40 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-0.5 before:bg-emerald-500 before:rounded-r',
+                  selectedId === conv.id && 'bg-accent/40 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-0.5 before:bg-primary-500 before:rounded-r',
                 )}
               >
                 <div className="flex gap-3 items-start">
@@ -336,7 +336,7 @@ export function ConversationList({
                       className={cn(
                         'absolute -bottom-0.5 -right-0.5 h-5 w-5 rounded-full flex items-center justify-center border-2 border-background',
                         conv.channel === 'whatsapp'
-                          ? 'bg-emerald-500 text-white'
+                          ? 'bg-primary-500 text-white'
                           : conv.channel === 'instagram'
                           ? 'bg-gradient-to-tr from-purple-500 to-pink-500 text-white'
                           : 'bg-primary text-primary-foreground',
@@ -360,7 +360,7 @@ export function ConversationList({
                       <span
                         className={cn(
                           'text-[11px] whitespace-nowrap font-medium',
-                          conv.unread_count > 0 ? 'text-emerald-600' : 'text-muted-foreground',
+                          conv.unread_count > 0 ? 'text-primary-600' : 'text-muted-foreground',
                         )}
                       >
                         {formatDate(conv.last_message_at)}

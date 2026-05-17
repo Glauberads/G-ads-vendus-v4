@@ -270,9 +270,9 @@ export function MobileKanban({ productId, productName, organizationId }: MobileK
 
                   {/* Deal Value */}
                   {lead.deal_value && lead.deal_value > 0 && (
-                    <div className="flex items-center gap-1 px-2 py-1 bg-emerald-500/10 rounded-md w-fit mb-2">
+                    <div className="flex items-center gap-1 px-2 py-1 bg-primary-500/10 rounded-md w-fit mb-2">
                       <DollarSign size={12} className="text-emerald-600" />
-                      <span className="text-xs font-semibold text-emerald-600">
+                      <span className="text-xs font-semibold text-primary-600">
                         {formatCurrency(lead.deal_value)}
                       </span>
                     </div>
@@ -287,7 +287,7 @@ export function MobileKanban({ productId, productName, organizationId }: MobileK
                         className="h-7 px-2 text-[11px]"
                         onClick={e => { e.stopPropagation(); window.open(`tel:${lead.phone}`, '_self'); }}
                       >
-                        <Phone size={12} className="mr-1 text-green-500" />
+                        <Phone size={12} className="mr-1 text-primary-500" />
                         Ligar
                       </Button>
                     )}

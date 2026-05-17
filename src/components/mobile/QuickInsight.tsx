@@ -41,10 +41,10 @@ export function QuickInsight({
       glow: 'shadow-yellow-500/20',
     },
     success: {
-      bg: 'bg-green-500/10',
-      border: 'border-green-500/20',
-      icon: 'text-green-500',
-      glow: 'shadow-green-500/20',
+      bg: 'bg-primary-500/10',
+      border: 'border-primary-500/20',
+      icon: 'text-primary-500',
+      glow: 'shadow-primary-500/20',
     },
   };
 

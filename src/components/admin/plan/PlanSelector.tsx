@@ -18,7 +18,7 @@ const PLAN_THEMES = [
   { ring: 'ring-blue-500/40',  bg: 'bg-blue-500',    text: 'text-blue-500',    soft: 'bg-blue-500/10',    btn: 'bg-blue-500 hover:bg-blue-600 text-white' },
   { ring: 'ring-orange-500/40',bg: 'bg-orange-500',  text: 'text-orange-500',  soft: 'bg-orange-500/10',  btn: 'bg-orange-500 hover:bg-orange-600 text-white' },
   { ring: 'ring-purple-500/40',bg: 'bg-purple-500',  text: 'text-purple-500',  soft: 'bg-purple-500/10',  btn: 'bg-purple-500 hover:bg-purple-600 text-white' },
-  { ring: 'ring-emerald-500/40',bg:'bg-emerald-500', text: 'text-emerald-500', soft: 'bg-emerald-500/10', btn: 'bg-emerald-500 hover:bg-emerald-600 text-white' },
+  { ring: 'ring-primary-500/40',bg:'bg-primary-500', text: 'text-primary-500', soft: 'bg-primary-500/10', btn: 'bg-primary-500 hover:bg-primary-600 text-white' },
   { ring: 'ring-pink-500/40',  bg: 'bg-pink-500',    text: 'text-pink-500',    soft: 'bg-pink-500/10',    btn: 'bg-pink-500 hover:bg-pink-600 text-white' },
 ];
 

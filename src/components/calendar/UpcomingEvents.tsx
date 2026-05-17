@@ -41,7 +41,7 @@ export function UpcomingEvents({ onViewAll, onEventClick, maxEvents = 5 }: Upcom
       return { label: `Hoje, ${format(date, 'HH:mm')}`, color: 'text-yellow-500', bg: 'bg-yellow-500/10' };
     }
     if (isTomorrow(date)) {
-      return { label: `Amanhã, ${format(date, 'HH:mm')}`, color: 'text-green-500', bg: 'bg-green-500/10' };
+      return { label: `Amanhã, ${format(date, 'HH:mm')}`, color: 'text-primary-500', bg: 'bg-primary-500/10' };
     }
     return { 
       label: format(date, "EEE, d 'às' HH:mm", { locale: ptBR }), 

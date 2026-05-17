@@ -807,7 +807,7 @@ export function FunnelBlockEditor({ block, blocks, productId, onUpdate, onConnec
               />
             </div>
             <div className="space-y-2">
-              <Label className="flex items-center gap-2 text-green-600">
+              <Label className="flex items-center gap-2 text-primary-600">
                 <ArrowRight className="h-4 w-4" />
                 Se verdadeiro →
               </Label>

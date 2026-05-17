@@ -24,7 +24,7 @@ interface CreateNotificationDialogProps {
 const notificationTypes = [
   { value: 'system', label: 'Sistema', color: 'bg-blue-500' },
   { value: 'urgency', label: 'Urgente', color: 'bg-red-500' },
-  { value: 'opportunity', label: 'Oportunidade', color: 'bg-green-500' },
+  { value: 'opportunity', label: 'Oportunidade', color: 'bg-primary-500' },
   { value: 'cadence', label: 'Cadência', color: 'bg-purple-500' },
   { value: 'audit', label: 'Auditoria', color: 'bg-orange-500' },
 ];

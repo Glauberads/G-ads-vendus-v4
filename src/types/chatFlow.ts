@@ -136,7 +136,7 @@ export interface FlowBlockWithMeta extends FlowBlock {
 // Constantes
 export const BLOCK_TYPES: { type: FlowBlockType; label: string; icon: string; color: string }[] = [
   { type: 'message', label: 'Mensagem', icon: 'MessageSquare', color: 'bg-blue-500' },
-  { type: 'input', label: 'Captura', icon: 'FormInput', color: 'bg-green-500' },
+  { type: 'input', label: 'Captura', icon: 'FormInput', color: 'bg-primary-500' },
   { type: 'buttons', label: 'Botões', icon: 'LayoutGrid', color: 'bg-purple-500' },
   { type: 'ai_takeover', label: 'IA Assume', icon: 'Bot', color: 'bg-orange-500' },
   { type: 'handoff', label: 'Atendente', icon: 'UserCheck', color: 'bg-red-500' },

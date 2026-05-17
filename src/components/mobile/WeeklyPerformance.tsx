@@ -98,7 +98,7 @@ export function WeeklyPerformance({
             <div className={cn(
               "flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full",
               comparedToLastWeek >= 0 
-                ? "bg-green-500/10 text-green-600"
+                ? "bg-primary-500/10 text-primary-600"
                 : "bg-red-500/10 text-red-600"
             )}>
               {comparedToLastWeek >= 0 ? (

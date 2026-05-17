@@ -119,7 +119,7 @@ export function SectorsManager() {
                       <td className="px-4 py-3 text-muted-foreground">{s.bot_order ?? '-'}</td>
                       <td className="px-4 py-3">
                         {s.is_active ? (
-                          <span className="inline-flex items-center gap-1.5 text-xs text-emerald-600">
+                          <span className="inline-flex items-center gap-1.5 text-xs text-primary-600">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Ativo
                           </span>
                         ) : (

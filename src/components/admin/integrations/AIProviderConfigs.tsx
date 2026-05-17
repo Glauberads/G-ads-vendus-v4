@@ -70,10 +70,10 @@ function AIProviderConfig({ provider }: AIProviderConfigProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         {isConfigured && (
-          <div className="flex items-center justify-between gap-2 rounded-lg border border-green-500/20 bg-green-500/10 p-3 text-sm">
+          <div className="flex items-center justify-between gap-2 rounded-lg border border-primary-500/20 bg-primary-500/10 p-3 text-sm">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-green-600" />
-              <span className="text-green-700 dark:text-green-400">
+              <span className="text-primary-700 dark:text-primary-400">
                 Chave verificada {current?.api_key_masked ? `(${current.api_key_masked})` : ''}
                 {current?.last_verified_at
                   ? ` em ${new Date(current.last_verified_at).toLocaleDateString('pt-BR')}`
@@ -167,9 +167,9 @@ export function LovableAIInfo() {
         </div>
       </CardHeader>
       <CardContent className="space-y-3 text-sm">
-        <div className="flex items-center gap-2 rounded-lg border border-green-500/20 bg-green-500/10 p-3">
+        <div className="flex items-center gap-2 rounded-lg border border-primary-500/20 bg-primary-500/10 p-3">
           <CheckCircle2 className="h-4 w-4 text-green-600" />
-          <span className="text-green-700 dark:text-green-400">
+          <span className="text-primary-700 dark:text-primary-400">
             Já está ativo — não requer configuração.
           </span>
         </div>

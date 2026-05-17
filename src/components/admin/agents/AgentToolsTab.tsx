@@ -94,21 +94,21 @@ export function AgentToolsTab({ formData, onChange }: AgentToolsTabProps) {
       <Card>
         <CardHeader className="py-3 px-4">
           <CardTitle className="text-sm flex items-center gap-2">
-            <User className="h-4 w-4 text-green-500" />
+            <User className="h-4 w-4 text-primary-500" />
             Gestão do Lead
           </CardTitle>
           <CardDescription className="text-xs">Atualizar informações e categorizar leads</CardDescription>
         </CardHeader>
         <CardContent className="px-4 pb-3 space-y-1">
           <ToolToggle
-            icon={<Tag className="h-4 w-4 text-green-500" />}
+            icon={<Tag className="h-4 w-4 text-primary-500" />}
             label="Aplicar / remover tags"
             description="Categorizar leads com etiquetas automaticamente"
             checked={formData.can_apply_tags ?? false}
             onCheckedChange={(v) => onChange({ can_apply_tags: v })}
           />
           <ToolToggle
-            icon={<StickyNote className="h-4 w-4 text-green-500" />}
+            icon={<StickyNote className="h-4 w-4 text-primary-500" />}
             label="Adicionar notas internas"
             description="Registrar observações no perfil do lead"
             checked={formData.can_add_notes ?? false}

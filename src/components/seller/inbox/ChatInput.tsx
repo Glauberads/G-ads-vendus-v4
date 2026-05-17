@@ -388,8 +388,8 @@ export function ChatInput({
                     className="w-full flex items-center gap-3 px-2 py-2 text-sm rounded-md hover:bg-muted transition-colors"
                     onClick={handleMeetingLink}
                   >
-                    <span className="h-8 w-8 rounded-full bg-emerald-500/15 flex items-center justify-center">
-                      <VideoIcon className="h-4 w-4 text-emerald-500" />
+                    <span className="h-8 w-8 rounded-full bg-primary-500/15 flex items-center justify-center">
+                      <VideoIcon className="h-4 w-4 text-primary-500" />
                     </span>
                     <span>Link de Reunião</span>
                   </button>

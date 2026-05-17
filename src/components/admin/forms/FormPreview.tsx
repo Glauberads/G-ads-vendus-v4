@@ -47,7 +47,7 @@ export function FormPreview({ form, blocks, theme }: FormPreviewProps) {
       case 'end_screen':
         return (
           <div key={block.id} className={cn("min-h-[300px] flex flex-col items-center justify-center text-center p-8", blockBg)}>
-            <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
+            <div className="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center mb-4">
               <Check className="h-8 w-8 text-green-500" />
             </div>
             <h1 className={cn("text-2xl font-bold mb-3", textColor)}>{block.label}</h1>
@@ -168,11 +168,11 @@ export function FormPreview({ form, blocks, theme }: FormPreviewProps) {
               
               <div className="flex gap-3">
                 <button className={cn(
-                  "flex-1 p-4 rounded-lg border-2 transition-all hover:border-green-500 hover:bg-green-500/10",
+                  "flex-1 p-4 rounded-lg border-2 transition-all hover:border-primary-500 hover:bg-primary-500/10",
                   inputBg, textColor
                 )}>
                   <div className="flex items-center justify-center gap-2">
-                    <span className="w-6 h-6 rounded-full border-2 border-green-500 flex items-center justify-center text-xs font-medium text-green-500">
+                    <span className="w-6 h-6 rounded-full border-2 border-primary-500 flex items-center justify-center text-xs font-medium text-primary-500">
                       Y
                     </span>
                     <span>Sim</span>

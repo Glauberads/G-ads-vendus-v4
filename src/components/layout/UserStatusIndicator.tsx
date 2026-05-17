@@ -13,7 +13,7 @@ const STATUS_CONFIG: Record<UserStatusType, { label: string; description: string
   online: {
     label: 'Disponível',
     description: 'Recebe leads automaticamente',
-    color: 'text-green-500',
+    color: 'text-primary-500',
   },
   away: {
     label: 'Ausente',

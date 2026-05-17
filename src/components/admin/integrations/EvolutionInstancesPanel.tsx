@@ -349,8 +349,8 @@ export function EvolutionInstancesPanel() {
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between gap-4 flex-wrap">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="h-10 w-10 rounded-lg bg-green-500/10 flex items-center justify-center shrink-0">
-                      <Smartphone className="h-5 w-5 text-green-500" />
+                    <div className="h-10 w-10 rounded-lg bg-primary-500/10 flex items-center justify-center shrink-0">
+                      <Smartphone className="h-5 w-5 text-primary-500" />
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">

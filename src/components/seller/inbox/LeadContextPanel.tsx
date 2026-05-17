@@ -193,7 +193,7 @@ export function LeadContextPanel({
                     href={`https://wa.me/${displayPhone.replace(/\D/g, '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1 text-xs text-muted-foreground hover:text-emerald-600"
+                    className="inline-flex items-center justify-center gap-1 text-xs text-muted-foreground hover:text-primary-600"
                   >
                     <Phone className="h-3 w-3" />
                     {displayPhone}
@@ -571,7 +571,7 @@ export function LeadContextPanel({
                 )}
                 {onCreateEvent && (
                   <Button variant="outline" size="sm" onClick={onCreateEvent} className="w-full justify-start">
-                    <CalendarPlus className="h-3.5 w-3.5 mr-2 text-emerald-600" />
+                    <CalendarPlus className="h-3.5 w-3.5 mr-2 text-primary-600" />
                     Novo Evento na Agenda
                   </Button>
                 )}
@@ -584,7 +584,7 @@ export function LeadContextPanel({
                 {displayPhone && (
                   <Button
                     variant="outline" size="sm"
-                    className="w-full justify-start text-emerald-600 hover:text-emerald-700"
+                    className="w-full justify-start text-primary-600 hover:text-primary-700"
                     asChild
                   >
                     <a href={`https://wa.me/${displayPhone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer">

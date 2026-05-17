@@ -262,7 +262,7 @@ export function WebsiteCrawler({ productId }: WebsiteCrawlerProps) {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Globe className="h-5 w-5 text-green-500" />
+            <Globe className="h-5 w-5 text-primary-500" />
             Adicionar Website
           </CardTitle>
           <CardDescription>
@@ -583,8 +583,8 @@ export function WebsiteCrawler({ productId }: WebsiteCrawlerProps) {
                     className="flex items-center justify-between p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
                   >
                     <div className="flex items-center gap-3 flex-1 min-w-0">
-                      <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                        <Globe className="h-5 w-5 text-green-500" />
+                      <div className="w-10 h-10 rounded-lg bg-primary-500/10 flex items-center justify-center flex-shrink-0">
+                        <Globe className="h-5 w-5 text-primary-500" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-medium truncate">{website.title}</p>
@@ -601,7 +601,7 @@ export function WebsiteCrawler({ productId }: WebsiteCrawlerProps) {
                     <div className="flex items-center gap-2">
                       <Badge
                         variant={website.processing_status === 'completed' ? 'default' : 'secondary'}
-                        className={website.processing_status === 'completed' ? 'bg-green-600' : ''}
+                        className={website.processing_status === 'completed' ? 'bg-primary-600' : ''}
                       >
                         {website.processing_status === 'completed' ? 'Processado' : website.processing_status}
                       </Badge>

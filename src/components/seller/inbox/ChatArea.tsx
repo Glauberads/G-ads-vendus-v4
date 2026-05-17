@@ -354,7 +354,7 @@ export function ChatArea({
                 {visitorName || 'Visitante'}
               </span>
               {peerOnline && (
-                <span className="h-1.5 w-1.5 rounded-full bg-green-500 flex-shrink-0" />
+                <span className="h-1.5 w-1.5 rounded-full bg-primary-500 flex-shrink-0" />
               )}
             </div>
             <div className="text-[11px] text-muted-foreground truncate">
@@ -461,8 +461,8 @@ export function ChatArea({
               </span>
               {peerOnline && (
                 <span className="relative flex h-2 w-2 flex-shrink-0" title="Online agora">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-500 opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-500" />
                 </span>
               )}
               <ChannelBadge channel={channel} size="sm" />
@@ -500,7 +500,7 @@ export function ChatArea({
                 )}
                 {currentAgentName && (
                   <Badge
-                    className="h-5 px-1.5 text-[10px] gap-1 font-medium border bg-emerald-500/10 text-emerald-600 border-emerald-500/30 hover:bg-emerald-500/10"
+                    className="h-5 px-1.5 text-[10px] gap-1 font-medium border bg-primary-500/10 text-primary-600 border-primary-500/30 hover:bg-primary-500/10"
                   >
                     <Bot className="h-2.5 w-2.5" />
                     {currentAgentName} · IA

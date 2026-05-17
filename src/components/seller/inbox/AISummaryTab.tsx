@@ -65,7 +65,7 @@ export function AISummaryTab({ conversationId }: AISummaryTabProps) {
 
   const score = Math.max(0, Math.min(10, data.score ?? 0));
   const scoreColor =
-    score >= 8 ? 'text-emerald-500' : score >= 5 ? 'text-yellow-500' : 'text-destructive';
+    score >= 8 ? 'text-primary-500' : score >= 5 ? 'text-yellow-500' : 'text-destructive';
 
   return (
     <div className="space-y-4">
@@ -123,7 +123,7 @@ export function AISummaryTab({ conversationId }: AISummaryTabProps) {
       {/* Strengths */}
       {data.strengths?.length > 0 && (
         <Section
-          icon={<ThumbsUp className="h-3.5 w-3.5 text-emerald-500" />}
+          icon={<ThumbsUp className="h-3.5 w-3.5 text-primary-500" />}
           title="Pontos fortes"
           items={data.strengths}
         />

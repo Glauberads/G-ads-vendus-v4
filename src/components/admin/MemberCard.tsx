@@ -92,7 +92,7 @@ export function MemberCard({ member, onEditRole, onEditSquad, onAssignProduct, o
                   <Badge 
                     key={product.id}
                     variant="secondary"
-                    className="gap-1 bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
+                    className="gap-1 bg-primary-500/10 text-primary-600 border-primary-500/20"
                   >
                     <Package className="h-3 w-3" />
                     <span className="truncate max-w-[80px]">{product.name}</span>

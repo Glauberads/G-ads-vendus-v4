@@ -23,7 +23,7 @@ type Material = Tables<'materials'>;
 const typeConfig = {
   document: { label: 'Documento', icon: FileText, color: 'bg-blue-500/10 text-blue-600' },
   video: { label: 'Vídeo', icon: Video, color: 'bg-red-500/10 text-red-600' },
-  image: { label: 'Imagem', icon: Image, color: 'bg-emerald-500/10 text-emerald-600' },
+  image: { label: 'Imagem', icon: Image, color: 'bg-primary-500/10 text-primary-600' },
   link: { label: 'Link', icon: Link2, color: 'bg-violet-500/10 text-violet-600' },
   other: { label: 'Outro', icon: File, color: 'bg-muted text-muted-foreground' },
 };

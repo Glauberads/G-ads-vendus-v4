@@ -47,7 +47,7 @@ const SOURCE_TYPES = [
     label: 'Websites', 
     icon: Globe, 
     description: 'URLs para crawling',
-    color: 'text-green-500'
+    color: 'text-primary-500'
   },
   { 
     id: 'youtube', 

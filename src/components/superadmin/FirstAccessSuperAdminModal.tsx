@@ -399,7 +399,7 @@ function StepEvolution({ onDone, alreadyDone }: { onDone: () => void; alreadyDon
         <div
           className={`flex items-start gap-2 rounded-md border p-3 text-sm ${
             testResult.ok
-              ? 'border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400'
+              ? 'border-primary-500/30 bg-primary-500/10 text-primary-700 dark:text-primary-400'
               : 'border-destructive/30 bg-destructive/10 text-destructive'
           }`}
         >

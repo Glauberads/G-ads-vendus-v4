@@ -116,7 +116,7 @@ export function UsersManager() {
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center gap-3">
-              <Users className="h-5 w-5 text-emerald-500" />
+              <Users className="h-5 w-5 text-primary-500" />
               <span className="text-sm text-muted-foreground">Vendedores</span>
             </div>
             <p className="text-2xl font-bold mt-2">

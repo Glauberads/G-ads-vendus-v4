@@ -48,7 +48,7 @@ const SOURCE_ICONS: Record<string, React.ElementType> = {
 
 const SOURCE_COLORS: Record<string, string> = {
   file: 'text-blue-500 bg-blue-500/10',
-  website: 'text-green-500 bg-green-500/10',
+  website: 'text-primary-500 bg-primary-500/10',
   youtube: 'text-red-500 bg-red-500/10',
   faq: 'text-purple-500 bg-purple-500/10',
   data: 'text-orange-500 bg-orange-500/10',
@@ -65,7 +65,7 @@ const STATUS_ICONS: Record<string, React.ElementType> = {
 const STATUS_COLORS: Record<string, string> = {
   pending: 'text-yellow-500',
   processing: 'text-blue-500 animate-spin',
-  completed: 'text-green-500',
+  completed: 'text-primary-500',
   failed: 'text-red-500',
 };
 

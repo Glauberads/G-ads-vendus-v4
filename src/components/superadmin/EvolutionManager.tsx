@@ -108,8 +108,8 @@ export function EvolutionManager() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-                <Server className="h-5 w-5 text-green-500" />
+              <div className="h-10 w-10 rounded-lg bg-primary-500/10 flex items-center justify-center">
+                <Server className="h-5 w-5 text-primary-500" />
               </div>
               <div>
                 <CardTitle className="text-lg">Servidor Evolution Go</CardTitle>
@@ -171,7 +171,7 @@ export function EvolutionManager() {
               {testResult && (
                 <div className={`flex items-start gap-2 rounded-md border p-3 text-sm ${
                   testResult.ok
-                    ? 'border-green-500/30 bg-green-500/10 text-green-700 dark:text-green-400'
+                    ? 'border-primary-500/30 bg-primary-500/10 text-primary-700 dark:text-primary-400'
                     : 'border-destructive/30 bg-destructive/10 text-destructive'
                 }`}>
                   {testResult.ok ? <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0" /> : <XCircle className="h-4 w-4 mt-0.5 shrink-0" />}

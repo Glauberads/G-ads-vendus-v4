@@ -64,8 +64,8 @@ export function ProductDashboard({ product, onNavigate }: ProductDashboardProps)
       value: `${stats.conversionRate}%`, 
       change: 'dos deals fechados',
       icon: TrendingUp,
-      color: 'text-emerald-500',
-      bg: 'bg-emerald-500/10'
+      color: 'text-primary-500',
+      bg: 'bg-primary-500/10'
     },
     { 
       label: 'Valor Ganho', 

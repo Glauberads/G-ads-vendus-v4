@@ -62,7 +62,7 @@ export function MobileGoalsView({ userId, productId }: MobileGoalsViewProps) {
             </div>
             <span className={cn(
               "text-lg font-bold",
-              percentage >= 100 ? "text-green-500" : 
+              percentage >= 100 ? "text-primary-500" : 
               percentage >= 75 ? "text-primary" :
               percentage >= 50 ? "text-yellow-500" : "text-muted-foreground"
             )}>
@@ -73,7 +73,7 @@ export function MobileGoalsView({ userId, productId }: MobileGoalsViewProps) {
           <Progress value={percentage} className="h-3" />
 
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <TrendingUp size={14} className="text-green-500" />
+            <TrendingUp size={14} className="text-primary-500" />
             <span>Faltam {formatCurrency(Math.max(targetValue - achievedValue, 0))} para a meta</span>
           </div>
         </div>

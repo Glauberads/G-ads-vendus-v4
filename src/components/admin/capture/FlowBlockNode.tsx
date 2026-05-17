@@ -212,8 +212,8 @@ export const FlowBlockNode = memo(function FlowBlockNode({
     >
       {/* Start indicator */}
       {isStart && (
-        <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[10px] font-semibold text-green-600 bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/30">
-          <Play className="w-3 h-3 fill-green-600" />
+        <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[10px] font-semibold text-primary-600 bg-primary-500/10 px-2 py-0.5 rounded-full border border-primary-500/30">
+          <Play className="w-3 h-3 fill-primary-600" />
           INÍCIO
         </div>
       )}

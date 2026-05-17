@@ -58,7 +58,7 @@ export function AgentToolExecutionsPanel() {
           icon={<CheckCircle2 className="h-4 w-4 text-emerald-500" />}
           label="Sucesso"
           value={stats?.successes ?? 0}
-          accent="text-emerald-500"
+          accent="text-primary-500"
         />
         <StatCard
           icon={<AlertTriangle className="h-4 w-4 text-destructive" />}

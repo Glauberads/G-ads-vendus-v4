@@ -305,7 +305,7 @@ export function BookingLinkShare({ userId }: BookingLinkShareProps) {
             
             <Button 
               variant="outline" 
-              className="flex flex-col items-center gap-2 h-auto py-4 text-green-600 hover:text-green-700 hover:bg-green-50"
+              className="flex flex-col items-center gap-2 h-auto py-4 text-primary-600 hover:text-primary-700 hover:bg-primary-50"
               onClick={handleShareWhatsApp}
             >
               <MessageCircle className="h-5 w-5" />

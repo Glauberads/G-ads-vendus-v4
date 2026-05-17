@@ -52,7 +52,7 @@ export function FloatingActionButton({
             icon: <UserPlus size={20} />,
             label: 'Novo Lead',
             onClick: () => handleAction(onAddLead),
-            color: 'bg-green-500',
+            color: 'bg-primary-500',
           },
           {
             icon: <Filter size={20} />,
@@ -76,7 +76,7 @@ export function FloatingActionButton({
             icon: <UserPlus size={20} />,
             label: 'Novo Lead',
             onClick: () => handleAction(onAddLead),
-            color: 'bg-green-500',
+            color: 'bg-primary-500',
           },
           {
             icon: <Sparkles size={20} />,
@@ -91,7 +91,7 @@ export function FloatingActionButton({
             icon: <UserPlus size={20} />,
             label: 'Novo Lead',
             onClick: () => handleAction(onAddLead),
-            color: 'bg-green-500',
+            color: 'bg-primary-500',
           },
         ];
     }

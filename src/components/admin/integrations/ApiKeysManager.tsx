@@ -87,8 +87,8 @@ export function ApiKeysManager() {
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${isConfigured ? 'bg-green-100 dark:bg-green-900/30' : 'bg-muted'}`}>
-                      <Icon className={`h-5 w-5 ${isConfigured ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'}`} />
+                    <div className={`p-2 rounded-lg ${isConfigured ? 'bg-primary-100 dark:bg-primary-900/30' : 'bg-muted'}`}>
+                      <Icon className={`h-5 w-5 ${isConfigured ? 'text-primary-600 dark:text-primary-400' : 'text-muted-foreground'}`} />
                     </div>
                     <div>
                       <CardTitle className="text-base flex items-center gap-2">

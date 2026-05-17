@@ -57,7 +57,7 @@ export function ConversationAnalysisPanel({
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 8) return 'text-green-500';
+    if (score >= 8) return 'text-primary-500';
     if (score >= 5) return 'text-yellow-500';
     return 'text-destructive';
   };
@@ -127,12 +127,12 @@ export function ConversationAnalysisPanel({
               {analysis.strengths.length > 0 && (
                 <div>
                   <h4 className="text-sm font-medium flex items-center gap-1.5 mb-2">
-                    <ThumbsUp className="h-4 w-4 text-green-500" />
+                    <ThumbsUp className="h-4 w-4 text-primary-500" />
                     Pontos Fortes
                   </h4>
                   <ul className="space-y-1">
                     {analysis.strengths.map((s, i) => (
-                      <li key={i} className="text-sm text-muted-foreground pl-5 relative before:content-['✓'] before:absolute before:left-0 before:text-green-500">
+                      <li key={i} className="text-sm text-muted-foreground pl-5 relative before:content-['✓'] before:absolute before:left-0 before:text-primary-500">
                         {s}
                       </li>
                     ))}

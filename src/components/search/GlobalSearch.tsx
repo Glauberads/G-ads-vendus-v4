@@ -207,7 +207,7 @@ export function GlobalSearch({ onSelectLead, onSelectProduct }: GlobalSearchProp
                     value={`material-${material.id}`}
                     className="cursor-pointer"
                   >
-                    <FileText className="mr-2 h-4 w-4 text-green-500" />
+                    <FileText className="mr-2 h-4 w-4 text-primary-500" />
                     <div className="flex flex-col">
                       <span>{material.name}</span>
                       <span className="text-xs text-muted-foreground">{material.type}</span>
