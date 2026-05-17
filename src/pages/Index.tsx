@@ -240,14 +240,15 @@ const Index = () => {
     return <InitialLoadingScreen />;
   }
 
-  // Super Admin não é redirecionado automaticamente para /super-admin —
-  // após login ele cai no Dashboard de Vendas. O painel global continua
-  // acessível pelo link "Painel Super Admin" na sidebar / mobile menu.
+  // Super Admin: sempre redireciona para o painel global.
+  if (isSuperAdmin()) {
+    return <Navigate to="/super-admin" replace />;
+  }
 
   // Admin de empresa: sempre redireciona para o painel administrativo.
   // Exceção: se o onboarding guiado ainda não foi feito, NÃO redireciona —
   // deixa o modal de boas-vindas aparecer aqui.
-  if (isAdmin() && !isSuperAdmin() && !showGuided) {
+  if (isAdmin() && !showGuided) {
     return <Navigate to="/admin" replace />;
   }
 
