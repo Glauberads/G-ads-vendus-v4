@@ -71,14 +71,15 @@ export default function Login() {
   const handleGoogleSignIn = async () => {
     setIsGoogleLoading(true);
     try {
-      const { lovable } = await import('@/integrations/lovable');
-      const result = await lovable.auth.signInWithOAuth('google', {
-        redirect_uri: window.location.origin,
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin,
+        },
       });
-      if (result.error) {
-        toast.error(translateAuthError(result.error.message));
+      if (error) {
+        toast.error(translateAuthError(error.message));
       }
-      // Se result.redirected === true, o navegador será redirecionado automaticamente
     } catch (error) {
       toast.error('Ocorreu um erro inesperado');
     } finally {
