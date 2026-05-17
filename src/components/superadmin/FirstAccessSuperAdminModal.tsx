@@ -71,8 +71,7 @@ export function FirstAccessSuperAdminModal() {
     queryFn: async () => {
       const [settings, plans, orgs] = await Promise.all([
         supabase
-          .from('platform_settings')
-          .select('default_password_changed, evolution_go_url, support_email, remix_setup_completed')
+          .rpc('get_platform_settings_for_super_admin')
           .maybeSingle(),
         supabase
           .from('platform_plans')
@@ -104,16 +103,8 @@ export function FirstAccessSuperAdminModal() {
   };
 
   const finish = async () => {
-    const { data: existing } = await supabase
-      .from('platform_settings')
-      .select('id')
-      .maybeSingle();
-    if (existing?.id) {
-      await supabase
-        .from('platform_settings')
-        .update({ remix_setup_completed: true } as any)
-        .eq('id', existing.id);
-    }
+    await supabase
+      .rpc('update_platform_settings_for_super_admin', { settings: { remix_setup_completed: true } });
     await qc.invalidateQueries({ queryKey: ['super-admin-setup-checklist'] });
     await qc.invalidateQueries({ queryKey: ['platform-settings'] });
     setDismissed(true);

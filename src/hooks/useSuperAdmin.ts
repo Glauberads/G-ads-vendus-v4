@@ -31,10 +31,8 @@ export function usePlatformSettings() {
     queryKey: ['platform-settings'],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('platform_settings')
-        .select('*')
-        .limit(1)
-        .single();
+        .rpc('get_platform_settings_for_super_admin')
+        .maybeSingle();
       
       if (error) throw error;
       return data;
@@ -47,23 +45,11 @@ export function useUpdatePlatformSettings() {
 
   return useMutation({
     mutationFn: async (settings: Record<string, any>) => {
-      const { data: existing } = await supabase
-        .from('platform_settings')
-        .select('id')
-        .limit(1)
-        .single();
-
-      if (existing) {
-        const { data: updated, error } = await supabase
-          .from('platform_settings')
-          .update(settings)
-          .eq('id', existing.id)
-          .select('*')
-          .maybeSingle();
-        if (error) throw error;
-        return updated;
-      }
-      return null;
+      const { data: updated, error } = await supabase
+        .rpc('update_platform_settings_for_super_admin', { settings })
+        .maybeSingle();
+      if (error) throw error;
+      return updated;
     },
     onSuccess: (updated) => {
       // Limpa o cache local antigo (placeholder visual) para não voltar ao estado anterior

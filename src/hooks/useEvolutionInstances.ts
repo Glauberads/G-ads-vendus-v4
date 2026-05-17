@@ -38,9 +38,7 @@ export function usePlatformEvolutionConfig() {
     queryKey: ['platform-evolution-config'],
     queryFn: async (): Promise<PlatformEvolutionConfig> => {
       const { data, error } = await supabase
-        .from('platform_settings')
-        .select('evolution_go_url, evolution_go_global_api_key')
-        .limit(1)
+        .rpc('get_platform_settings_for_super_admin')
         .maybeSingle();
       if (error) throw error;
       return {
@@ -55,21 +53,9 @@ export function useUpdatePlatformEvolutionConfig() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async (cfg: PlatformEvolutionConfig) => {
-      const { data: existing } = await supabase
-        .from('platform_settings')
-        .select('id')
-        .limit(1)
-        .maybeSingle();
-      if (existing?.id) {
-        const { error } = await supabase
-          .from('platform_settings')
-          .update(cfg as any)
-          .eq('id', existing.id);
-        if (error) throw error;
-      } else {
-        const { error } = await supabase.from('platform_settings').insert(cfg as any);
-        if (error) throw error;
-      }
+      const { error } = await supabase
+        .rpc('update_platform_settings_for_super_admin', { settings: cfg });
+      if (error) throw error;
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['platform-evolution-config'] });

@@ -17,8 +17,7 @@ export function useSuperAdminFirstAccess() {
     enabled: !!user?.id && isSuperAdmin(),
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('platform_settings')
-        .select('default_password_changed, remix_setup_completed')
+        .rpc('get_platform_settings_for_super_admin')
         .maybeSingle();
       if (error) throw error;
       return data;
