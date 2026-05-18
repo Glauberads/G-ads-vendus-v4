@@ -7,9 +7,11 @@ import { CaktoSummaryCards } from './CaktoSummaryCards';
 import { CaktoOfferMapping } from './CaktoOfferMapping';
 import { CaktoRecoveryPanel } from './CaktoRecoveryPanel';
 import { PaymentGatewaysForm } from './PaymentGatewaysForm';
+import { PixDirectDashboard } from './PixDirectDashboard';
 
 import { useAuth } from '@/hooks/useAuth';
 import type { PaymentProvider } from '@/hooks/useCaktoOrders';
+
 
 export function CaktoAdminPanel() {
   const { profile } = useAuth();
@@ -52,6 +54,7 @@ export function CaktoAdminPanel() {
           {(provider === 'all' || provider === 'cakto') && (
             <TabsTrigger value="recovery">Recuperação IA</TabsTrigger>
           )}
+          <TabsTrigger value="pix-dashboard">Dashboard Pix</TabsTrigger>
           <TabsTrigger value="gateways">Gateways</TabsTrigger>
           <TabsTrigger value="settings">Configuração</TabsTrigger>
         </TabsList>
@@ -71,6 +74,10 @@ export function CaktoAdminPanel() {
 
         <TabsContent value="recovery" className="pt-4">
           <CaktoRecoveryPanel />
+        </TabsContent>
+
+        <TabsContent value="pix-dashboard" className="pt-4">
+          <PixDirectDashboard orgId={orgId ?? ''} />
         </TabsContent>
 
         <TabsContent value="gateways" className="pt-4">

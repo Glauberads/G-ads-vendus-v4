@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
-import { CheckCircle2, Copy, Loader2, RefreshCw, Smartphone, CreditCard, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, Copy, Loader2, RefreshCw, Smartphone, ShieldCheck, Clock, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface ProdutoItem {
@@ -19,6 +19,9 @@ interface Props {
   customerEmail: string;
   produtos: ProdutoItem[];
   onPaymentSuccess?: (transaction: any) => void;
+  ctaText?: string;
+  ctaUrl?: string;
+  onCtaClick?: () => void;
 }
 
 export function PixPaymentModal({
@@ -29,6 +32,9 @@ export function PixPaymentModal({
   customerEmail,
   produtos,
   onPaymentSuccess,
+  ctaText = 'Concluir',
+  ctaUrl,
+  onCtaClick,
 }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -38,26 +44,33 @@ export function PixPaymentModal({
   const [qrCode, setQrCode] = useState<string>('');
   const [qrCodeBase64, setQrCodeBase64] = useState<string>('');
   const [status, setStatus] = useState<'pending' | 'paid' | 'failed'>('pending');
+  const [expirationDate, setExpirationDate] = useState<string | null>(null);
   const [invoiceUrl, setInvoiceUrl] = useState<string | null>(null);
+
+  // Timer regressivo
+  const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
 
   // Gera o Pix no primeiro carregamento do modal
   useEffect(() => {
     if (isOpen) {
       generatePix();
     } else {
-      // Reseta estados
+      // Reseta todos os estados
       setTransactionId(null);
       setQrCode('');
       setQrCodeBase64('');
       setStatus('pending');
+      setExpirationDate(null);
       setInvoiceUrl(null);
       setError(null);
+      setSecondsLeft(null);
     }
   }, [isOpen]);
 
   const generatePix = async () => {
     setLoading(true);
     setError(null);
+    setSecondsLeft(null);
     try {
       const { data, error: funcError } = await supabase.functions.invoke('generate-checkout', {
         body: {
@@ -74,8 +87,9 @@ export function PixPaymentModal({
       setTransactionId(data.transactionId);
       setQrCode(data.qr_code);
       setQrCodeBase64(data.qr_code_base64);
-      setStatus(data.status === 'approved' ? 'paid' : 'pending');
+      setExpirationDate(data.expiration_date);
       setInvoiceUrl(data.invoice_url);
+      setStatus(data.status === 'approved' ? 'paid' : 'pending');
     } catch (err: any) {
       console.error('Erro ao gerar Pix Direct:', err);
       setError(err.message || 'Falha ao processar Pix. Verifique se as chaves do gateway estão configuradas.');
@@ -84,39 +98,116 @@ export function PixPaymentModal({
     }
   };
 
-  // Polling dinâmico a cada 4 segundos no banco para confirmar pagamento
+  // Cronômetro dinâmico de expiração & marcação de abandono
   useEffect(() => {
-    if (!transactionId || status === 'paid') return;
+    if (!expirationDate || status === 'paid' || status === 'failed') {
+      setSecondsLeft(null);
+      return;
+    }
 
-    const interval = setInterval(async () => {
+    const expTime = new Date(expirationDate).getTime();
+
+    const updateCountdown = async () => {
+      const now = Date.now();
+      const diff = Math.floor((expTime - now) / 1000);
+
+      if (diff <= 0) {
+        setSecondsLeft(0);
+        setStatus('failed');
+        if (transactionId) {
+          try {
+            await supabase
+              .from('transactions')
+              .update({ status: 'abandoned', updated_at: new Date().toISOString() })
+              .eq('id', transactionId);
+            toast.error('Este código Pix expirou.');
+          } catch (e) {
+            console.error('Erro ao salvar abandono do Pix:', e);
+          }
+        }
+      } else {
+        setSecondsLeft(diff);
+      }
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, [expirationDate, transactionId, status]);
+
+  // Sincronização híbrida: Realtime Supabase + Polling Fallback
+  useEffect(() => {
+    if (!transactionId || status === 'paid' || status === 'failed') return;
+
+    // 1. Canal Realtime Supabase para menor latência
+    const channel = supabase
+      .channel(`transaction-${transactionId}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'transactions',
+          filter: `id=eq.${transactionId}`,
+        },
+        (payload: any) => {
+          console.log('Update de transação via Realtime:', payload);
+          const newStatus = payload.new?.status;
+          if (newStatus === 'paid') {
+            setStatus('paid');
+            toast.success('Pagamento confirmado via Realtime!');
+            if (onPaymentSuccess) onPaymentSuccess(payload.new);
+          } else if (newStatus === 'abandoned' || newStatus === 'failed') {
+            setStatus('failed');
+          }
+        }
+      )
+      .subscribe();
+
+    // 2. Polling de velocidade ultra rápida (a cada 4 segundos)
+    const polling = setInterval(async () => {
       const { data, error: queryError } = await supabase
         .from('transactions')
-        .select('status')
+        .select('*')
         .eq('id', transactionId)
         .maybeSingle();
 
-      if (queryError) {
-        console.error('Erro no polling do Pix:', queryError);
-        return;
-      }
-
-      if (data?.status === 'paid') {
-        setStatus('paid');
-        clearInterval(interval);
-        toast.success('Oba! Pagamento recebido com sucesso!');
-        if (onPaymentSuccess) {
-          onPaymentSuccess(data);
+      if (!queryError && data) {
+        if (data.status === 'paid') {
+          setStatus('paid');
+          toast.success('Pagamento confirmado via Polling!');
+          if (onPaymentSuccess) onPaymentSuccess(data);
+        } else if (data.status === 'abandoned' || data.status === 'failed') {
+          setStatus('failed');
         }
       }
     }, 4000);
 
-    return () => clearInterval(interval);
+    return () => {
+      supabase.removeChannel(channel);
+      clearInterval(polling);
+    };
   }, [transactionId, status]);
 
   const copyPixCode = () => {
     if (!qrCode) return;
     navigator.clipboard.writeText(qrCode);
     toast.success('Chave Pix copia e cola copiada!');
+  };
+
+  const formatTime = (secs: number) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+
+  const handleCtaClick = () => {
+    if (onCtaClick) {
+      onCtaClick();
+    } else if (ctaUrl) {
+      window.open(ctaUrl, '_blank', 'noopener,noreferrer');
+    }
+    onClose();
   };
 
   return (
@@ -153,7 +244,7 @@ export function PixPaymentModal({
             </Button>
           </div>
         ) : status === 'paid' ? (
-          /* Success Screen */
+          /* Premium Success Screen with CTA */
           <div className="flex flex-col items-center justify-center py-12 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
             <div className="relative">
               <div className="absolute inset-0 rounded-full bg-emerald-500/20 animate-ping scale-110" />
@@ -164,11 +255,28 @@ export function PixPaymentModal({
             <div className="space-y-1">
               <h3 className="text-lg font-bold text-foreground">Pagamento Confirmado!</h3>
               <p className="text-sm text-muted-foreground max-w-xs px-2">
-                Obrigado! O seu Pix foi processado instantaneamente e a transação está concluída.
+                O seu pagamento Pix foi processado instantaneamente e a transação está concluída.
               </p>
             </div>
-            <Button onClick={onClose} size="lg" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold">
-              Concluir
+            <Button onClick={handleCtaClick} size="lg" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold flex items-center justify-center gap-2">
+              {ctaText}
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+        ) : status === 'failed' || (secondsLeft !== null && secondsLeft <= 0) ? (
+          /* Expired Screen with regeneration option */
+          <div className="flex flex-col items-center justify-center py-12 text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
+            <div className="h-20 w-20 rounded-full bg-destructive/10 border border-destructive/20 flex items-center justify-center text-destructive">
+              <Clock className="h-10 w-10 text-rose-500 animate-pulse" />
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-lg font-bold text-foreground">Código Pix Expirado</h3>
+              <p className="text-sm text-muted-foreground max-w-xs px-2">
+                O tempo limite estabelecido para efetuar o Pix esgotou. Marcaremos esta transação como não concluída.
+              </p>
+            </div>
+            <Button onClick={generatePix} size="lg" className="w-full bg-primary hover:bg-primary/95 text-white font-semibold">
+              Gerar Novo Código Pix
             </Button>
           </div>
         ) : (
@@ -189,6 +297,15 @@ export function PixPaymentModal({
                 ))}
               </div>
             </div>
+
+            {/* Timer Regressivo Display */}
+            {secondsLeft !== null && (
+              <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground font-semibold bg-rose-500/5 text-rose-600 dark:text-rose-400 py-1.5 px-3 rounded-lg border border-rose-500/10">
+                <Clock className="h-4 w-4 animate-spin text-rose-500" />
+                <span>Pague em até: </span>
+                <span className="font-mono font-bold text-sm">{formatTime(secondsLeft)}</span>
+              </div>
+            )}
 
             {/* QR Code Renders */}
             <div className="flex flex-col items-center justify-center space-y-3">
