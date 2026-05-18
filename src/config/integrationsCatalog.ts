@@ -174,11 +174,12 @@ export const integrationsCatalog: IntegrationCategory[] = [
       {
         id: 'stripe',
         name: 'Stripe',
-        description: 'Pagamentos internacionais e assinaturas',
+        description: 'Checkout externo via Stripe Session com Cartão e Boleto',
         icon: CreditCard,
         color: 'bg-indigo-500/10 text-indigo-500',
         logoSrc: '/integrations/logos/stripe.svg',
-        comingSoon: true,
+        configKey: 'cakto',
+        keywords: ['stripe', 'cartao', 'checkout', 'internacional'],
       },
       {
         id: 'mercadopago',
@@ -203,11 +204,12 @@ export const integrationsCatalog: IntegrationCategory[] = [
       {
         id: 'pagarme',
         name: 'Pagar.me',
-        description: 'Cartão, boleto e PIX (BR)',
+        description: 'PIX Direto nativo e Cartão Transparente (Pagar.me V5)',
         icon: DollarSign,
         color: 'bg-green-500/10 text-green-500',
         logoSrc: '/integrations/logos/pagarme.svg',
-        comingSoon: true,
+        configKey: 'cakto',
+        keywords: ['pagarme', 'pix', 'cartao', 'gateway', 'checkout'],
       },
       {
         id: 'pix-direto',

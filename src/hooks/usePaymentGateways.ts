@@ -8,6 +8,14 @@ export interface PaymentSettings {
   mp_public_key?: string | null;
   asaas_api_key?: string | null;
   asaas_wallet_id?: string | null;
+  stripe_secret_key?: string | null;
+  stripe_publishable_key?: string | null;
+  stripe_webhook_secret?: string | null;
+  stripe_enabled?: boolean | null;
+  pagarme_api_key?: string | null;
+  pagarme_encryption_key?: string | null;
+  pagarme_webhook_secret?: string | null;
+  pagarme_enabled?: boolean | null;
 }
 
 export function usePaymentGateways(orgId: string | undefined) {

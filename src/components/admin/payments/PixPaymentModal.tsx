@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
-import { CheckCircle2, Copy, Loader2, RefreshCw, Smartphone, ShieldCheck, Clock, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Copy, Loader2, RefreshCw, Smartphone, ShieldCheck, Clock, ArrowRight, CreditCard, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface ProdutoItem {
@@ -14,7 +14,7 @@ interface ProdutoItem {
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  gateway: 'mercadopago' | 'asaas';
+  gateway: 'mercadopago' | 'asaas' | 'stripe' | 'pagarme';
   amount: number;
   customerEmail: string;
   produtos: ProdutoItem[];
@@ -39,7 +39,7 @@ export function PixPaymentModal({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
-  // Pix States
+  // States
   const [transactionId, setTransactionId] = useState<string | null>(null);
   const [qrCode, setQrCode] = useState<string>('');
   const [qrCodeBase64, setQrCodeBase64] = useState<string>('');
@@ -47,13 +47,13 @@ export function PixPaymentModal({
   const [expirationDate, setExpirationDate] = useState<string | null>(null);
   const [invoiceUrl, setInvoiceUrl] = useState<string | null>(null);
 
-  // Timer regressivo
+  // Timer regressivo para PIX
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
 
-  // Gera o Pix no primeiro carregamento do modal
+  // Gera a cobrança no primeiro carregamento do modal
   useEffect(() => {
     if (isOpen) {
-      generatePix();
+      generatePayment();
     } else {
       // Reseta todos os estados
       setTransactionId(null);
@@ -67,40 +67,54 @@ export function PixPaymentModal({
     }
   }, [isOpen]);
 
-  const generatePix = async () => {
+  const generatePayment = async () => {
     setLoading(true);
     setError(null);
     setSecondsLeft(null);
     try {
-      const { data, error: funcError } = await supabase.functions.invoke('generate-checkout', {
-        body: {
-          gateway,
-          amount,
-          customer_email: customerEmail,
-          produtos,
-        },
+      let functionName = 'generate-checkout';
+      const bodyPayload: any = {
+        gateway,
+        amount,
+        customer_email: customerEmail,
+        produtos,
+      };
+
+      if (gateway === 'stripe') {
+        functionName = 'generate-stripe-checkout';
+      } else if (gateway === 'pagarme') {
+        functionName = 'generate-pagarme-checkout';
+      }
+
+      const { data, error: funcError } = await supabase.functions.invoke(functionName, {
+        body: bodyPayload,
       });
 
       if (funcError) throw funcError;
       if (data.error) throw new Error(data.error);
 
       setTransactionId(data.transactionId);
-      setQrCode(data.qr_code);
-      setQrCodeBase64(data.qr_code_base64);
-      setExpirationDate(data.expiration_date);
-      setInvoiceUrl(data.invoice_url);
-      setStatus(data.status === 'approved' ? 'paid' : 'pending');
+      setStatus(data.status === 'approved' || data.status === 'paid' ? 'paid' : 'pending');
+
+      if (gateway === 'stripe') {
+        setInvoiceUrl(data.checkout_url);
+      } else {
+        setQrCode(data.qr_code);
+        setQrCodeBase64(data.qr_code_base64);
+        setExpirationDate(data.expiration_date);
+        setInvoiceUrl(data.invoice_url || null);
+      }
     } catch (err: any) {
-      console.error('Erro ao gerar Pix Direct:', err);
-      setError(err.message || 'Falha ao processar Pix. Verifique se as chaves do gateway estão configuradas.');
+      console.error('Erro ao gerar cobrança/checkout:', err);
+      setError(err.message || `Falha ao processar checkout via ${gateway.toUpperCase()}. Verifique se as credenciais estão ativas no painel.`);
     } finally {
       setLoading(false);
     }
   };
 
-  // Cronômetro dinâmico de expiração & marcação de abandono
+  // Cronômetro dinâmico de expiração & marcação de abandono (PIX)
   useEffect(() => {
-    if (!expirationDate || status === 'paid' || status === 'failed') {
+    if (!expirationDate || status === 'paid' || status === 'failed' || gateway === 'stripe') {
       setSecondsLeft(null);
       return;
     }
@@ -133,7 +147,7 @@ export function PixPaymentModal({
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
-  }, [expirationDate, transactionId, status]);
+  }, [expirationDate, transactionId, status, gateway]);
 
   // Sincronização híbrida: Realtime Supabase + Polling Fallback
   useEffect(() => {
@@ -210,16 +224,35 @@ export function PixPaymentModal({
     onClose();
   };
 
+  const handleStripeRedirect = () => {
+    if (invoiceUrl) {
+      window.open(invoiceUrl, '_blank', 'noopener,noreferrer');
+      toast.success('Redirecionando para o Checkout Seguro do Stripe...');
+    }
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-[450px] overflow-hidden border border-border/80 bg-gradient-to-b from-card to-card/95 p-6 shadow-2xl rounded-2xl">
         <DialogHeader className="text-center pb-2 border-b border-border/50">
           <DialogTitle className="text-xl font-bold flex items-center justify-center gap-2 text-foreground">
-            <Smartphone className="h-5 w-5 text-primary animate-pulse" />
-            Pagamento via Pix Direct
+            {gateway === 'stripe' ? (
+              <>
+                <CreditCard className="h-5 w-5 text-indigo-500 animate-pulse" />
+                Checkout Seguro Stripe
+              </>
+            ) : (
+              <>
+                <Smartphone className="h-5 w-5 text-primary animate-pulse" />
+                Pagamento via Pix Direct
+              </>
+            )}
           </DialogTitle>
           <DialogDescription className="text-xs text-muted-foreground">
-            Escaneie o código QR ou copie a chave Pix para concluir.
+            {gateway === 'stripe' 
+              ? 'Pague via Cartão de Crédito ou Boleto usando a infraestrutura do Stripe.'
+              : 'Escaneie o código QR ou copie a chave Pix para concluir.'
+            }
           </DialogDescription>
         </DialogHeader>
 
@@ -227,7 +260,7 @@ export function PixPaymentModal({
           <div className="flex flex-col items-center justify-center py-16 space-y-4">
             <Loader2 className="h-10 w-10 animate-spin text-primary" />
             <p className="text-sm font-medium text-muted-foreground animate-pulse">
-              Gerando seu código Pix Direct...
+              Gerando seu checkout seguro...
             </p>
           </div>
         ) : error ? (
@@ -238,7 +271,7 @@ export function PixPaymentModal({
             <p className="text-sm font-medium text-destructive px-4">
               {error}
             </p>
-            <Button variant="outline" size="sm" onClick={generatePix} className="gap-1">
+            <Button variant="outline" size="sm" onClick={generatePayment} className="gap-1">
               <RefreshCw className="h-4 w-4" />
               Tentar novamente
             </Button>
@@ -255,7 +288,7 @@ export function PixPaymentModal({
             <div className="space-y-1">
               <h3 className="text-lg font-bold text-foreground">Pagamento Confirmado!</h3>
               <p className="text-sm text-muted-foreground max-w-xs px-2">
-                O seu pagamento Pix foi processado instantaneamente e a transação está concluída.
+                O seu pagamento foi recebido e processado com sucesso. A transação está concluída!
               </p>
             </div>
             <Button onClick={handleCtaClick} size="lg" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold flex items-center justify-center gap-2">
@@ -270,14 +303,63 @@ export function PixPaymentModal({
               <Clock className="h-10 w-10 text-rose-500 animate-pulse" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-lg font-bold text-foreground">Código Pix Expirado</h3>
+              <h3 className="text-lg font-bold text-foreground">Código de Pagamento Expirado</h3>
               <p className="text-sm text-muted-foreground max-w-xs px-2">
-                O tempo limite estabelecido para efetuar o Pix esgotou. Marcaremos esta transação como não concluída.
+                O tempo limite estabelecido esgotou.
               </p>
             </div>
-            <Button onClick={generatePix} size="lg" className="w-full bg-primary hover:bg-primary/95 text-white font-semibold">
-              Gerar Novo Código Pix
+            <Button onClick={generatePayment} size="lg" className="w-full bg-primary hover:bg-primary/95 text-white font-semibold">
+              Gerar Novo Código
             </Button>
+          </div>
+        ) : gateway === 'stripe' ? (
+          /* Stripe External Checkout Redirection UI */
+          <div className="space-y-5 pt-3 animate-in fade-in duration-200">
+            {/* Order Summary */}
+            <div className="p-4 rounded-lg bg-muted/40 border border-border/50 text-xs space-y-2">
+              <div className="font-semibold text-foreground flex items-center justify-between">
+                <span>Resumo da Venda</span>
+                <span className="text-indigo-500 font-bold text-sm">R$ {amount.toFixed(2)}</span>
+              </div>
+              <div className="text-[11px] text-muted-foreground leading-relaxed max-h-16 overflow-y-auto pr-1">
+                {produtos.map((p, i) => (
+                  <div key={i} className="flex justify-between py-0.5">
+                    <span>{p.name} (x{p.quantity})</span>
+                    <span>R$ {(p.price * p.quantity).toFixed(2)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center justify-center space-y-4 py-4">
+              <div className="h-16 w-16 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-500">
+                <CreditCard className="h-8 w-8 animate-bounce" />
+              </div>
+              <p className="text-xs text-muted-foreground text-center max-w-[280px]">
+                Clique no botão abaixo para ser redirecionado para a página de faturamento criptografado da Stripe.
+              </p>
+
+              <Button 
+                onClick={handleStripeRedirect} 
+                size="lg" 
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold flex items-center justify-center gap-2 shadow-lg"
+              >
+                Efetuar Pagamento Seguro
+                <ExternalLink className="h-4 w-4" />
+              </Button>
+
+              <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground bg-primary/5 py-1 px-3 rounded-full border border-primary/10 animate-pulse">
+                <Loader2 className="h-3 w-3 animate-spin text-indigo-500" />
+                Aguardando confirmação do pagamento...
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-border/40 text-center">
+              <span className="text-[10px] text-muted-foreground flex items-center justify-center gap-1">
+                <ShieldCheck className="h-3.5 w-3.5 text-indigo-500" />
+                Checkout oficial processado sob criptografia ponta a ponta.
+              </span>
+            </div>
           </div>
         ) : (
           /* Pix QR & Details Screen */
@@ -312,7 +394,7 @@ export function PixPaymentModal({
               <div className="relative p-3 rounded-xl border border-border/80 bg-white shadow-inner flex items-center justify-center h-[200px] w-[200px]">
                 {qrCodeBase64 ? (
                   <img
-                    src={qrCodeBase64.startsWith('data:') ? qrCodeBase64 : `data:image/png;base64,${qrCodeBase64}`}
+                    src={qrCodeBase64.startsWith('data:') || qrCodeBase64.startsWith('http') ? qrCodeBase64 : `data:image/png;base64,${qrCodeBase64}`}
                     alt="QR Code Pix"
                     className="max-h-full max-w-full object-contain"
                   />
