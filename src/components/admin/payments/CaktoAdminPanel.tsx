@@ -6,6 +6,7 @@ import { CaktoOrdersTable } from './CaktoOrdersTable';
 import { CaktoSummaryCards } from './CaktoSummaryCards';
 import { CaktoOfferMapping } from './CaktoOfferMapping';
 import { CaktoRecoveryPanel } from './CaktoRecoveryPanel';
+import { PaymentGatewaysForm } from './PaymentGatewaysForm';
 
 import { useAuth } from '@/hooks/useAuth';
 import type { PaymentProvider } from '@/hooks/useCaktoOrders';
@@ -51,6 +52,7 @@ export function CaktoAdminPanel() {
           {(provider === 'all' || provider === 'cakto') && (
             <TabsTrigger value="recovery">Recuperação IA</TabsTrigger>
           )}
+          <TabsTrigger value="gateways">Gateways</TabsTrigger>
           <TabsTrigger value="settings">Configuração</TabsTrigger>
         </TabsList>
 
@@ -71,6 +73,10 @@ export function CaktoAdminPanel() {
           <CaktoRecoveryPanel />
         </TabsContent>
 
+        <TabsContent value="gateways" className="pt-4">
+          <PaymentGatewaysForm orgId={orgId ?? ''} />
+        </TabsContent>
+
         <TabsContent value="settings" className="pt-4">
           <CaktoCredentialsForm scope="organization" webhookUrl={caktoWebhookUrl} />
         </TabsContent>
@@ -78,3 +84,4 @@ export function CaktoAdminPanel() {
     </div>
   );
 }
+
