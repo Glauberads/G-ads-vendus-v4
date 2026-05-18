@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import vendusLogo from '@/assets/vendus-logo-white.png';
+import scaleLogo from '@/assets/vendus-logo-white.png';
 import './whitelabel.css';
 
 const CHECKOUT_URL = 'https://checkout.doppus.app/30426346/';
@@ -220,7 +220,7 @@ export default function WhiteLabelPage() {
       </div>
       <nav className="wl-nav"><div className="wl-nav-inner">
         <a href="#" className="wl-nav-brand">
-          <img src={vendusLogo} alt="Scale" className="wl-vendus-logo" style={{height:32}} />
+          <img src={scaleLogo} alt="Scale" className="wl-scale-logo" style={{height:32}} />
           
         </a>
         <ul className="wl-nav-links"><li><a href="#modulos">Módulos</a></li><li><a href="#calculadora">Calculadora</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#faq">FAQ</a></li></ul>
@@ -229,7 +229,7 @@ export default function WhiteLabelPage() {
 
       <section className="wl-hero" id="home">
         <div className="wl-grid-bg" /><div className="wl-hero-glow" /><div className="wl-hero-glow2" />
-        <img src={vendusLogo} alt="Scale White Label" style={{height:64,marginBottom:24,filter:'drop-shadow(0 0 30px rgba(0,255,102,0.4))'}} />
+        <img src={scaleLogo} alt="Scale White Label" style={{height:64,marginBottom:24,filter:'drop-shadow(0 0 30px rgba(0,255,102,0.4))'}} />
         <div className="wl-hero-badge">🔥 Lançamento Scale White Label</div>
         <h1>Sua plataforma de vendas<br /><span className="hl">com Agentes de IA</span><span className="line2">— sua marca, seus clientes, sua recorrência</span></h1>
         <p className="wl-hero-sub">Tenha um SaaS completo de CRM, IA, omnichannel e automação com 28 módulos prontos. Código-fonte React + Supabase 100% seu, white label real, pronto para vender amanhã.</p>

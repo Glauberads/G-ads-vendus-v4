@@ -53,7 +53,7 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 29 100% 50%;
 
-    /* Vendus Gradients - Orange */
+    /* Scale Gradients - Orange */
     --gradient-primary: linear-gradient(135deg, hsl(29 100% 30%), hsl(29 100% 50%), hsl(29 100% 65%));
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
     --gradient-hero: linear-gradient(135deg, hsl(29 100% 65% / 0.08), hsl(29 100% 50% / 0.04));
@@ -112,7 +112,7 @@
     --sidebar-border: 222 30% 15%;
     --sidebar-ring: 29 100% 50%;
 
-    /* Vendus Gradients - Dark */
+    /* Scale Gradients - Dark */
     --gradient-primary: linear-gradient(135deg, hsl(29 100% 30%), hsl(29 100% 50%), hsl(29 100% 65%));
     --gradient-card: linear-gradient(180deg, hsl(222 47% 10%), hsl(222 47% 8%));
     --gradient-hero: linear-gradient(135deg, hsl(222 47% 8%), hsl(222 47% 4%));

@@ -571,7 +571,7 @@
     box-shadow: 0 12px 40px rgba(0,0,0,0.5);
   }
   .wl-nav-brand { gap: 6px; }
-  .wl-vendus-logo { height: 28px; }
+  .wl-scale-logo { height: 28px; }
   .wl-nav-brand-text { font-size: 0.78rem; }
   .wl-nav-brand-text small { font-size: 0.5rem; letter-spacing: 2px; }
   .wl-nav-cta { font-size: 0.72rem; padding: 8px 14px; }
@@ -593,8 +593,8 @@
   .wl-topbar { font-size: 0.7rem; padding: 6px 10px; }
 }
 
-/* === Vendus Pricing Dual Card === */
-.wl-vendus-logo { height: 40px; width: auto; display: block; }
+/* === Scale Pricing Dual Card === */
+.wl-scale-logo { height: 40px; width: auto; display: block; }
 .wl-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .wl-nav-brand-text { color: var(--wl-text); font-weight: 800; font-size: 1rem; letter-spacing: 1px; line-height: 1; }
 .wl-nav-brand-text small { display: block; color: var(--wl-accent); font-size: 0.62rem; letter-spacing: 3px; font-weight: 700; margin-top: 3px; }

@@ -1,5 +1,5 @@
 // =====================================================
-// VENDUS CAPTURE: Tipos TypeScript para Funis de Leads
+// SCALE CAPTURE: Tipos TypeScript para Funis de Leads
 // STRATEGY FLOW BUILDER v2
 // =====================================================
 
