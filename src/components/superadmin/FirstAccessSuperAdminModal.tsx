@@ -60,6 +60,7 @@ export function FirstAccessSuperAdminModal() {
   const [step, setStep] = useState<Step>('password');
   const [opened, setOpened] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [hasAutoRouted, setHasAutoRouted] = useState(false);
 
   useEffect(() => {
     if (shouldForceSetup && !opened) setOpened(true);
@@ -90,6 +91,23 @@ export function FirstAccessSuperAdminModal() {
       };
     },
   });
+
+  useEffect(() => {
+    if (state && !hasAutoRouted) {
+      setHasAutoRouted(true);
+      if (!state.passwordChanged) {
+        setStep('password');
+      } else if (!state.nameSet) {
+        setStep('name');
+      } else if (!state.hasPlan) {
+        setStep('plan');
+      } else if (!state.hasOrg) {
+        setStep('organization');
+      } else if (!state.completed) {
+        setStep('done');
+      }
+    }
+  }, [state, hasAutoRouted]);
 
   if (!opened || dismissed) return null;
 
@@ -213,7 +231,17 @@ function StepPassword({ onDone, alreadyDone, refetchAccess }: { onDone: () => vo
       setLoading(false);
       return toast.error('Erro ao atualizar senha', { description: error.message });
     }
-    try { await supabase.rpc('mark_super_admin_password_changed' as any); } catch {}
+    
+    // Atualização segura via RPC de super admin que contorna a RLS e cria a linha se não existir
+    const { error: rpcError } = await supabase.rpc('update_platform_settings_for_super_admin', {
+      settings: { default_password_changed: true }
+    });
+    
+    if (rpcError) {
+      console.warn('Falha no update_platform_settings_for_super_admin RPC, tentando fallback para legado:', rpcError);
+      try { await supabase.rpc('mark_super_admin_password_changed' as any); } catch {}
+    }
+    
     await refetchAccess();
     setLoading(false);
     toast.success('Senha atualizada!');
