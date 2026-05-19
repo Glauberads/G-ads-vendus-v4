@@ -42,13 +42,19 @@ O **Scale** (anteriormente *Vendus v3*) é uma plataforma SaaS *All-in-One* ultr
 - Personalização de logotipo (light/dark), favicon, título do navegador, manifest PWA e cores do sistema.
 - Painel Super Admin para controle absoluto de planos, organizações e revendas.
 
+### 7. 💳 Scale Pay — Gateways de Pagamento Integrados (Multi-Tenant)
+- **Stripe**: Checkout Session seguro de cartão e boleto com redirecionamento externo.
+- **Pagar.me (V5)**: Pix Direct nativo com modal interno e estrutura preparada para Cartão Transparente.
+- **Mercado Pago & Asaas**: Pagamentos de Pix Direct com temporizador regressivo e auto-abandono.
+- **Webhook Securizado**: Edge Functions dedicadas a receber e validar assinaturas e notificações de pagamento (Stripe raw body verificado via Web Crypto HMAC-SHA256).
+
 ---
 
 ## 🛠️ Stack Tecnológica
 
 - **Frontend**: React 18, Vite, TypeScript, Tailwind CSS, shadcn/ui.
 - **Backend & Database**: Supabase (PostgreSQL, Row Level Security, RPCs baseados em segurança robusta).
-- **Serviços Serverless**: +80 Edge Functions baseadas em Deno no Supabase.
+- **Serviços Serverless**: +85 Edge Functions baseadas em Deno no Supabase.
 - **Hospedagem**: Vercel (com fallback SPA integrado via `vercel.json`).
 - **Autenticação**: Supabase Auth nativo com suporte a e-mail/senha e login social (Google OAuth).
 
@@ -59,20 +65,23 @@ O **Scale** (anteriormente *Vendus v3*) é uma plataforma SaaS *All-in-One* ultr
 ```
 ├── .lovable/                 # Configurações do Lovable
 ├── docs/                     # Documentação de referência técnica
-│   ├── DATABASE.md           # Detalhamento do banco de dados (139 tabelas)
-│   └── EDGE_FUNCTIONS.md     # Catálogo das 81 Edge Functions
 ├── public/                   # Arquivos estáticos públicos e favicon
 ├── src/                      # Código-fonte do Frontend
 │   ├── assets/               # Imagens, logotipos Scale oficiais e estilos
 │   ├── components/           # Componentes de interface reutilizáveis (UI/Dashboard)
-│   ├── hooks/                # Custom React hooks (Supabase queries/mutations)
+│   │   └── admin/payments/   # Formulários de gateways e modal de checkout
+│   ├── hooks/                # Custom React hooks (usePaymentGateways)
 │   ├── pages/                # Páginas da aplicação (Login, CRM, SuperAdmin, WhiteLabel)
 │   ├── types/                # Definições de tipos TypeScript
 │   └── utils/                # Funções utilitárias e clientes de API
 ├── supabase/                 # Estrutura do Backend
 │   ├── config.toml           # Configurações de Edge Functions e JWT
-│   ├── functions/            # Código-fonte das 81 Edge Functions (Deno)
-│   └── migrations/           # Migrações SQL versionadas (Baseline gerado)
+│   ├── functions/            # Código-fonte das Edge Functions (Deno)
+│   │   ├── generate-stripe-checkout/   # Criação de Checkout Session Stripe
+│   │   ├── stripe-webhook/             # Webhook Stripe com raw body e HMAC
+│   │   ├── generate-pagarme-checkout/  # Pix Direct Pagar.me V5
+│   │   └── pagarme-webhook/            # Webhook Pagar.me V5
+│   └── migrations/           # Migrações SQL versionadas (Adição de Stripe e Pagar.me)
 ├── vercel.json               # Regras de roteamento SPA da Vercel
 └── vite.config.ts            # Configurações de build do Vite
 ```

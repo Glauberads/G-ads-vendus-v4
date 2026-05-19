@@ -191,3 +191,40 @@ O rebranding visual completo do projeto de **Vendus** para **Scale** foi meticul
 ### 3. Redirecionamento 404 após login com o Google
 - **Causa**: O parâmetro `redirectTo` está enviando o usuário para a URL errada ou o domínio não está registrado no provedor de autenticação no Supabase.
 - **Resolução**: Revise a URL de redirecionamento no console do Supabase e certifique-se de cadastrar o domínio exato no Google Cloud Console com o sufixo `/auth/v1/callback` se necessário.
+
+---
+
+## 💳 10. Scale Pay — Ecossistema de Pagamentos Multi-Tenant
+
+O Scale conta com um ecossistema nativo de gateways de faturamento chamado **Scale Pay**, que permite que cada tenant (empresa) configure de maneira segura e independente as suas credenciais para vender produtos por **Pix** ou **Cartão de Crédito**.
+
+### 1. Modelagem & Tabelas Relacionadas
+* **`public.payment_settings`**: Armazena as chaves de acesso privadas dos tenants (ex: `mp_access_token`, `stripe_secret_key`, `pagarme_api_key`). Possui política RLS estrita que só permite que administradores e super-admins acessem ou modifiquem registros de sua própria `organization_id`.
+* **`public.transactions`**: Registra e audita todos os pagamentos da plataforma.
+  * Colunas principais: `organization_id`, `gateway` (tipo enum: `stripe`, `pagarme`, `mercadopago`, `asaas`), `external_id` (ID da cobrança no gateway), `status` (`pending`, `paid`, `abandoned`, `failed`), `amount`, `customer_email`, `produtos_details` (JSONB), `qr_code`, `qr_code_base64`, `expiration_date`, `invoice_url`.
+
+### 2. Fluxo do Checkout Inteligente
+```mermaid
+graph TD
+    Client[Cliente final] -->|Inicia compra| Modal[CheckoutModal unificado]
+    Modal -->|Verifica gateway ativo| API[Deno Edge Function do Gateway]
+    API -->|Cria cobrança| GatewayAPI[Gateway de Pagamento]
+    GatewayAPI -->|Retorna Payload| API
+    API -->|Salva localmente| DB[transactions: status pending]
+    API -->|Retorna dados| Modal
+    
+    style DB fill:#f9f,stroke:#333,stroke-width:2px
+```
+
+* **Stripe (Checkout Externo)**: A Edge Function `generate-stripe-checkout` cria uma Checkout Session oficial no Stripe com cartão e boleto, e o modal exibe um botão de redirecionamento.
+* **Pagar.me / Mercado Pago / Asaas (Pix Direct)**: A Edge Function cria uma cobrança Pix e o modal exibe o QR Code, código copia-e-cola e cronômetro regressivo.
+
+### 3. Sincronização em Tempo Real (Realtime + Polling)
+Para atualizar o status assim que o pagamento é aprovado, o checkout implementa uma escuta híbrida de alta resiliência:
+1. **Supabase Realtime**: Escuta alterações (`postgres_changes`) na tabela `transactions` em tempo real para o ID correspondente.
+2. **Polling Fallback**: Dispara requisições redundantes periódicas a cada 4 segundos como tolerância a falhas ou perda de conexão Websocket.
+
+### 4. Validação de Assinatura nos Webhooks (Segurança Avançada)
+Todos os webhooks públicos resolvem o tenant e a autenticidade antes de processar eventos:
+* **Stripe Webhook**: Lê o corpo em texto bruto (`rawBody` via `req.text()`) e realiza a validação de assinatura `stripe-signature` de forma nativa na Edge Function usando a API Web Crypto do Deno (criptografia HMAC-SHA256) contra o segredo `stripe_webhook_secret` do tenant.
+* **Pagar.me Webhook**: Recebe atualizações automáticas via Postbacks (`charge.paid` -> `'paid'`, `charge.payment_failed` -> `'failed'`).
